@@ -1,0 +1,41 @@
+1.
+	a. 	nrow(csv) - nrow(clean)
+		= 670
+
+	b. 	sum(csv[['POPULATION']]) - sum(clean[['POPULATION']])
+		= 2194964
+
+	c. 	The max and min median household incomes were removed, but the mean and quatililes remained essentially the same. 
+		The mean of median house value decreased by the slight amount of $850.
+
+2.
+	a. 	res = lm(medianHouseValue~medianIncome)
+		Intercept of $33672, coefficient of 5.1
+		An increase of a single in dollar in an census block's median incomes is correrlated with a five dollar increase in median house values.
+
+	b.	lm(formula = medianHouseValue ~ meanIncome)
+		Intercept of $-3861, coefficient of 4.66
+		Both the intercept and slope decreased; for any positive income we'd predicit a lower price using the mean instead of median. The income distrubtion has a long right tail, which makes the adverage value of the mean (74739) greater than that of the median (60620). We are regressing on the same houses values, the curve has to shift downward.
+
+	c.	lm(formula = medianHouseValue ~ meanIncome + medianIncome)
+		Intercept of $-2413, meanIncome: 5.7, medianIncome: -1.7
+		This is essientially the same as the regression in b with the added wrinkle that increasing median income while holding mean income constant is associated with lower house prices - essietnally evening out the income distibution (becauses of its right hand tail) in an area lowers its housing price. This doesn't seem implausaible but I'm a little skeptical
+
+3. 	a.	lm(formula = medianHouseValue ~ meanIncome + medianIncome + pop + 
+    numUnits + numVacant + ownerPercent + rooms + ownerSize + 
+    renterSize)
+    	Intercept: 30500
+    	meanIncome: 5.4
+    	median: 1.6 - surpzingly, this isn't negitive which might cast some doubt on the analysis in 2c.
+    	pop: -5.4
+    	numUnits: 13 pop is negitive but units are postive..
+    	numVacant: -31 vacent buildings are associated with lower home values!
+    	ownerPercentage: -1600 people more likely to own in less expensive areas
+    	rooms: -82000
+    	ownerSize: 15000
+    	renterSize: 13763 
+    	Why doesn't size go the same direction as units? places with more expsense houses have less rooms per household and more people crowded into a space?
+
+4.	a.	Muliplying by their adverage by their coeffients, meanIncome, ownersize, and rooms have the largest effect.
+
+
