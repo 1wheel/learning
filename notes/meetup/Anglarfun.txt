@@ -1,0 +1,118 @@
+Principlas
+	start with something and do it!
+	don't have to argue about changing it
+
+	when investing in front end, you don't always find someone that uses and knos somethings
+
+	developer autonomy
+		i don't wanna wait for your api
+		front end/back end
+		with angular, you know you'll be waiting on api calls at all
+			we don't want to hinder 
+
+		node/express
+		fire up a node server, we can respond to those APIs read to go
+		make sure your api stays the same
+
+		with angular, no matter what the backend is 
+
+		pricples IE
+			most of us can't stand it, but few of us can ignore it
+
+			<mywidget></mywidget> won't render in IE
+
+			document.createElement('mywidget');
+			but that is really hard to do for everything!
+
+			ie can use xml prefixes
+			<app:mywidge></app:mywidget>
+				don't ahve to include goofy bit of javacript
+				we know right away that is is one of ours
+
+		minimu distriburtion
+			the dist director must contain only th emimumfiles for the application
+			framework.css - included in the styles min css, in our prinicple it wouldn't be indlucde
+			it has EXACTLY the files needed to run the appliaction
+
+		everything minifiable
+			the scope won't be inject if you aren't careful
+
+			anglue fiex it in a couple ways...
+
+		debuggable
+			how do you debug minified?
+				sourcemaps? awesome
+				minify code and keep a map back to the source, debug there 
+
+		one moudle per file
+			how many is acceptable?
+			controller, director, service,
+
+		inject everything
+			unit testing
+
+		no globals
+
+		files, files, files
+		angular
+
+		load files
+
+		call botstrap manuular?
+			or depencancy loader with requirer.js
+
+			loads the dependencies from the source AND gives you a handle to them
+
+			started with define... i don't need require.js to give me handle, do need it to load the file for me
+
+
+		build steps
+			grunt
+			grunt dev
+			grunt broad (decat, minification)
+			grunt test
+			grunt server
+
+		template cache
+			when it loads your appliaction, it will already have all the views; they are all in one call
+			if you're ok with loading dynamilally, do it
+			but the first time they load, it was slow.. we were willing to slow down ininital load for snappier flow
+
+		live reload
+			no more leaving browser... browswer just refeshes! 
+		google chrome plugin: tinker
+
+		grunt husterler - cache busting
+
+		directorary
+			layer
+				buiness functino
+				auth folder,
+			gone the later route, creating piles and piles of assets
+
+			src/dist
+
+			keep all compont in one folder?
+
+			if we were using bauer, i probably would defult what they were doing
+
+			unforently, css maybe has to load in a certain order (CASCADING)
+			have to define dependines somewhere
+
+		dependency managment
+			everything is custom written, so we don't have that issue (except bootstrap by twitter)
+
+			yeowmen, put the file in the right place and it creates another scafflodiing
+
+		hard to load depenceincies on the fly...
+			what if i didn't have a service loaded, but i need it now? anglurar will just break down
+
+			angluar looking sill
+				the work around... just make another angular thing
+
+			i'd rather just wait 20 once rather than paues over and over
+
+			do you do any async modular that isn't part of core
+				just any chunk you want to pull in later
+
+			
