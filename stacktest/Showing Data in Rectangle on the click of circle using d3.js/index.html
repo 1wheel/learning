@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  font: 10px sans-serif;
+}
+
+path {
+  fill: steelblue;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+    var width = 960,
+    height = 500;
+    var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    d3.json("data.json", function (json) {
+        /* Define the data for the circles */
+        var elem = svg.selectAll("g myCircleText")
+        .data(json.nodes)
+        /*Create and place the "blocks" containing the circle and the text */
+        var elemEnter = elem.enter()
+        .append("g")
+        .attr("transform", function (d) { return "translate(" + d.x + ",80)" })
+        /*Create the circle for each block */
+        var circle = elemEnter.append("circle")
+        .attr("r", function (d) { return d.r })
+        .attr("stroke", "black")
+        .attr("fill", "white")
+        .on("click", function () {          
+          svg.append("rect")
+              .attr("x", 100)
+              .attr("y", 200)
+              .attr("width", 200)
+              .attr("height", 200)
+              .style("fill", "red");
+             });
+
+        /* Create the text for each block */
+        elemEnter.append("text")
+        .attr("dx", function (d) { return -20 })
+        .text(function (d) { return d.label })
+    })
+
+</script>
+
+<circle r="60" stroke="black" fill="white"><rect></rect></circle>

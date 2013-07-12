@@ -1,0 +1,52 @@
+Infographics/data story telling
+Nuno Vargas
+	Go to newsrooms to fix things and thing what is wrong
+
+	Use prebuilt tools like infogram so we can starting getting stuff done
+
+	Basic goal to correct mistakes in how data is presented
+	think what kind of data we have and what we'd like to portay
+
+
+	http://www.nytimes.com/2013/05/19/health/the-health-toll-of-immigration.html?pagewanted=all&_r=1&
+
+	1. what's the story?
+
+	2. what's the data we have?
+
+	3. draw - by hand a storyboard with frame by frame
+
+	4. combine the stories into a digital canvas
+
+	infogr.am
+	http://www.easel.ly/
+
+	First-Generation Immigrants have MORE: 
+
+	brad victor
+
+	timeline.js
+
+Tabulo
+	from stillwater
+	clients all over all the world
+	work with very small companies and big companies
+	interworks does tabula and we do it
+	(good chance we are teaching tabuo public class)
+
+	started with them in 2006
+
+	download in a minute! the prices were on a website, no salesmen
+	swiss army nice for data
+
+	normally is two days! 16 hours into 2
+
+Creating visualization live demo
+	veritgo, appesea, greenlight
+
+
+connect live
+
+data blending: left joins
+	only perists in one view
+	

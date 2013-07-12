@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+<div class="container">
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+<h2>Bar Chart Test Floats & Negatives</h2>
+    <div id="fluctuation-chart">
+      
+        <a class="reset" href="javascript:fluctuationChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+        <div class="clearfix"></div>
+		
+		<div class="dc-data-count">
+		
+		<span class="filter-count"></span> selected out of <span class="total-count"></span> records | <a
+			href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+	</div>
+    </div>
+
+<div class="row">
+    <table class="table table-hover dc-data-table">
+        <thead>
+        <tr class="header">
+            <th>Date</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="crossfilter.js"></script>
+<script type="text/javascript" src="dc.js"></script>
+<script type="text/javascript" src="script.js"></script>

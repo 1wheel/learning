@@ -1,0 +1,5 @@
+{"nodes":[
+  {"x":80, "r":40, "label":"Sam","info":"Developer"}, 
+  {"x":200, "r":60, "label":"Pam","info":"Programmer"}, 
+  {"x":380, "r":80, "label":"Ram","info":"Architect"}
+]}

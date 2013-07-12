@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+
+path{stroke: steelblue;
+    stroke-width: 4
+    ;
+    fill: none;}
+
+.axis path,
+.axis line {fill: none;
+            stroke: grey;
+            stroke-width: 2.5;
+            shape-rendering: crispEdges;}
+
+</style>
+
+<h1>FDD Visualization</h1>
+<h2>A simple Graph with visual aids using d3</h2>
+
+<body>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript"></script>
+
+  <script>
+
+var margin = {top: 50, right: 20, bottom: 50, left: 50},
+    width = 1020 - margin.left - margin.right,
+    height = 580 - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%d/%m/%Y").parse;
+
+var x = d3.time.scale().range([0, width]);
+var y = d3.scale.linear().range([height, 0]);
+
+var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom").ticks(5);
+
+var yAxis = d3.svg.axis().scale(y)
+    .orient("left").ticks(5);
+
+var valueline = d3.svg.line()
+    .x(function(d) { return x(d.timestamp); })
+    .y(function(d) { return y(d.temperature); });
+
+var svg = d3.select("body")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top +")")
+        .attr("fill",function(d){return"rgb(0,100,10)";} );
+
+// Get the data
+d3.csv("data.csv", function(error, data){
+  debugger;
+  data.forEach(function(d) {
+    d.timestamp = parseDate('?'+d.timestamp);
+    d.temperature = +d.temperature;});
+  z = data;
+  // Scale the range of the data
+  x.domain(d3.extent(data, function(d) { return d.timestamp; }));
+  y.domain([0, d3.max(data, function(d) { return d.temperature; })]);
+
+  svg.append("path")      // Add the valueline path.
+      .attr("d", valueline(data));
+
+  svg.append("g")         // Add the X Axis
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")         // Add the Y Axis
+      .attr("class", "y axis")
+      .call(yAxis);
+
+});
+
+</script>
+</body>

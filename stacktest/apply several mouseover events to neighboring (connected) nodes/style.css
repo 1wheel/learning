@@ -1,0 +1,10 @@
+    .link line {
+        stroke: gray;}
+    .link line.separator {
+        stroke: white;}
+    .node circle {
+        stroke: gray;
+        stroke-width: 1.5;}
+    .node text {
+        font: 12px sans-serif;
+        pointer-events: none;}
