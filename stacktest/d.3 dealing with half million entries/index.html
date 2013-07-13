@@ -56,7 +56,7 @@ var svg = d3.select("body")
 d3.csv("data.csv", function(error, data){
   debugger;
   data.forEach(function(d) {
-    d.timestamp = parseDate('?'+d.timestamp);
+    d.timestamp = parseDate(d.timestamp);
     d.temperature = +d.temperature;});
   z = data;
   // Scale the range of the data

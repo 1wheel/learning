@@ -46,13 +46,19 @@ path {
         .attr("r", function (d) { return d.r })
         .attr("stroke", "black")
         .attr("fill", "white")
-        .on("click", function () {          
+        .on("click", function(d) {  
+        console.log(d);        
           svg.append("rect")
               .attr("x", 100)
               .attr("y", 200)
               .attr("width", 200)
               .attr("height", 200)
-              .style("fill", "red");
+              .style("fill", "red")
+              .append("svg:text").text(d.info)
+
+                    .attr("x", 10)
+      .attr("dy", ".31em")
+
              });
 
         /* Create the text for each block */
