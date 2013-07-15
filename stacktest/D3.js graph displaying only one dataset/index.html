@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Isolate server</title>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <style>
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .x.axis path {
+    display: none;
+  }
+
+  .line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+  </style>
+</head>
+<body>
+  <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Isolateserver - Stats</a>
+      <ul class="nav">
+        <li><a href="/index.html">Requests</a></li>
+        <li class="active"><a href="/page2.html">Overview</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div id="box" class="offset2 span10">
+        <h2>Overview for last 6 days</h2>
+        <p>Overview graph with the 4 main categories Requests, Downloads, Uploads, Lookups</p>
+        <script>
+
+        var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+        var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S.%L").parse;
+
+        var x0 = d3.scale.ordinal()
+        .rangeRoundBands([width, 0], .1);
+
+        var x1 = d3.scale.ordinal();
+
+        var y = d3.scale.linear()
+        .range([height, 0]);
+
+        var color = d3.scale.ordinal()
+        .range(["#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+var xAxis = d3.svg.axis()
+  .scale(x0)
+  .orient("bottom")
+  .tickFormat(d3.time.format("%m-%d"));
+
+        var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickFormat(d3.format(".2s"));
+
+        var svg = d3.select("#box").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+        d3.json("data3.json", function(error, data) {
+          var ageNames = d3.keys(data.days[0].values).filter(function(key) {
+            if (key !== "downloads_bytes" && key !== "uploads_bytes" && key !== "failures" && key !== "contains_requests") {
+              return key
+            }
+          });
+
+          data.days.forEach(function(d) {
+            d.ages = ageNames.map(function(name) { return {name: name, value: +d.values[name]}; });
+          });
+
+x0.domain(data.days.map(function(d) {
+  var str = d.modified;
+  d.date = parseDate( str.substring(0, str.length - 3) );
+  return d.date;
+}));
+          x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+          y.domain([0, d3.max(data.days, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
+
+          svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+          svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+          .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Data");
+
+var state = svg.selectAll(".state")
+    .data(data.days)
+  .enter().append("g")
+    .attr("class", "g")
+    .attr("transform", function(d) { return "translate(" + x0(d.date) + ",0)"; });
+
+          state.selectAll("rect")
+          .data(function(d) { return d.ages; })
+          .enter().append("rect")
+          .attr("width", x1.rangeBand())
+          .attr("x", function(d) { return x1(d.name); })
+          .attr("y", function(d) { return y(d.value); })
+          .attr("height", function(d) { return height - y(d.value); })
+          .style("fill", function(d) { return color(d.name); });
+
+          var legend = svg.selectAll(".legend")
+          .data(ageNames)
+          .enter().append("g")
+          .attr("class", "legend")
+          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+          legend.append("rect")
+          .attr("x", width - 18)
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", color);
+
+          legend.append("text")
+          .attr("x", width - 24)
+          .attr("y", 9)
+          .attr("dy", ".35em")
+          .style("text-anchor", "end")
+          .text(function(d) { return d; });
+
+        });
+
+</script>
+</div>
+</div>
+</div>
+</body>
+</html>

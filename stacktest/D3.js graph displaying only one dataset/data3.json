@@ -1,0 +1,141 @@
+{
+  "hours": [
+    {
+      "values": {
+        "contains_lookups": 232164,
+        "downloads": 101,
+        "contains_requests": 2374,
+        "downloads_bytes": 531404778,
+        "uploads": 140,
+        "uploads_bytes": 1594365306,
+        "failures": 9,
+        "requests": 2725
+      },
+      "minutes_bitmap": 1099511627775,
+      "created": "2013-07-15 18:44:44.568650"
+    },
+    {
+      "values": {
+        "contains_lookups": 300036,
+        "downloads": 394,
+        "contains_requests": 3060,
+        "downloads_bytes": 760176615,
+        "uploads": 193,
+        "uploads_bytes": 1521269529,
+        "failures": 15,
+        "requests": 3780
+      },
+      "minutes_bitmap": 1152921504606846975,
+      "created": "2013-07-15 18:04:25.337990"
+    }
+  ],
+  "now": "2013-07-15 18:44",
+  "minutes": [],
+  "days": [
+    {
+      "values": {
+        "contains_lookups": 2623728,
+        "downloads": 2368,
+        "contains_requests": 26809,
+        "downloads_bytes": 7737356012,
+        "uploads": 2042,
+        "uploads_bytes": 17974727901,
+        "failures": 65,
+        "requests": 32548
+      },
+      "hours_bitmap": 262143,
+      "modified": "2013-07-15 00:05:35.963480",
+      "created": "2013-07-15 18:04:25.339040"
+    },
+    {
+      "values": {
+        "contains_lookups": 568693,
+        "downloads": 552,
+        "contains_requests": 5801,
+        "downloads_bytes": 1320699368,
+        "uploads": 661,
+        "uploads_bytes": 3412920406,
+        "failures": 19,
+        "requests": 7332
+      },
+      "hours_bitmap": 16777215,
+      "modified": "2013-07-14 00:05:03.443100",
+      "created": "2013-07-15 00:04:35.717800"
+    },
+    {
+      "values": {
+        "contains_lookups": 34551,
+        "downloads": 26,
+        "contains_requests": 355,
+        "downloads_bytes": 153302840,
+        "uploads": 97,
+        "uploads_bytes": 326466948,
+        "failures": 0,
+        "requests": 509
+      },
+      "hours_bitmap": 16777215,
+      "modified": "2013-07-13 00:05:34.554530",
+      "created": "2013-07-14 00:04:03.158470"
+    },
+    {
+      "values": {
+        "contains_lookups": 4474086,
+        "downloads": 11113,
+        "contains_requests": 46055,
+        "downloads_bytes": 23794147400,
+        "uploads": 3516,
+        "uploads_bytes": 27505116853,
+        "failures": 126,
+        "requests": 63483
+      },
+      "hours_bitmap": 16777215,
+      "modified": "2013-07-12 00:05:11.232690",
+      "created": "2013-07-13 00:04:34.167310"
+    },
+    {
+      "values": {
+        "contains_lookups": 8816200,
+        "downloads": 18821,
+        "contains_requests": 90892,
+        "downloads_bytes": 42884025183,
+        "uploads": 7042,
+        "uploads_bytes": 55590594161,
+        "failures": 553,
+        "requests": 123084
+      },
+      "hours_bitmap": 16777215,
+      "modified": "2013-07-11 00:05:44.694330",
+      "created": "2013-07-12 00:04:10.925910"
+    },
+    {
+      "values": {
+        "contains_lookups": 9086720,
+        "downloads": 103415,
+        "contains_requests": 93340,
+        "downloads_bytes": 52481581498,
+        "uploads": 7578,
+        "uploads_bytes": 58674894820,
+        "failures": 436,
+        "requests": 210439
+      },
+      "hours_bitmap": 16777215,
+      "modified": "2013-07-10 00:05:10.577620",
+      "created": "2013-07-11 00:04:44.506790"
+    },
+    {
+      "values": {
+        "contains_lookups": 8415839,
+        "downloads": 35716,
+        "contains_requests": 86215,
+        "downloads_bytes": 25004859799,
+        "uploads": 9758,
+        "uploads_bytes": 55004220264,
+        "failures": 496,
+        "requests": 137162
+      },
+      "hours_bitmap": 16777215,
+      "modified": "2013-07-09 00:05:57.256600",
+      "created": "2013-07-10 00:04:10.407840"
+    }
+  ]
+}
