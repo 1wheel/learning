@@ -1,0 +1,137 @@
+GeoNYC 9/9/13
+
+	Mapping for WalkNYC
+		T-Carter
+			Providing a wayfinding system for ny dot
+
+		London
+			Doing it for over 10 years
+			Devopling modal information
+				Buses said stuff about buses
+				trains said stuff about bikes
+				no maps for bikes
+
+			Need people to walk more
+				subway trips w/ one or two stops all the time
+				want fewer cars w/ congessition feeds
+				buses don't have tickets sold withing
+				people need more information
+
+			1000s of info points over london
+				densiest in the middle, more on the periphary
+
+			Cycle superhighways
+				bike paths from the out, in
+				less intersection w/ traffic
+
+			we combined graphic design and catrography element
+				mostly paper products on the street
+				some digitial products too
+
+
+		New York
+			Bloomber created more public spaces, way eaiser to walk around now
+				eaiser to bike and walk
+
+			Brought over to do simerlar work
+				production and design effort - 'interesting process'
+
+			Faceup/heads up map are much more understandble then north up maps
+
+			simple/predictable/relevant
+
+			use the mta icongraphy as a starting point
+			hevitica as a font
+
+			sources
+				do-it data form the city
+
+			standards
+				layers, apperence
+				large scale, locator 1/500
+				overview 1/10000 for biking
+
+			by 2014 should have whole city mapped out by teams (only lower manhattan done now)
+
+			a couple signs up around china town now
+
+			very rectanglular signs
+				opposite sides show different information, what you're facing
+
+			data set covered by open data law, not released to entire delivery
+
+			automated label placement
+				database allowes overlap
+				graphic artist goes over eachone and does some finishing work by hand
+					highly automated, font sizes correctly position is close
+					layout walk speed circles by hand
+
+	Eric - 596 Acres
+		NYC's community land access advocates
+
+		The city owns hundres of vacent lots
+
+		city required to list vacent lots
+			most only have street name
+			corridant system
+				something weird only the city use
+			BBL 
+				bougho, block, lot
+
+		liteacy project
+			about: data, city government
+
+		we built webpage for each block, found contact info for people responsible in government
+
+		put up physical signs
+			with contact info
+			tips on mobilizing so people can interactct with city gogv
+
+		used google maps to throw out lots being used for gardens
+
+		geodjango
+		postgis
+
+		16 groups, got access to 31 lots: community gardens, children play area, moving screening
+
+		just want to get people mobilized!
+
+		the future!
+			other places - philly
+
+		why is the land vacent?
+			urban renew in the 60s/70s; vacent for half a century unexsucablity
+			market hasn't gotten there yet
+
+		doing jobs in other cities for grants, that pays our rent
+
+		wish list of vacent lots?
+
+		why is the lot data not updated?
+			wish i had insight into how this data was constructed
+			in chicago they have some on github...
+			there needs to be feedback loop
+			bring up at beta
+
+
+	
+
+
+
+
+
+	???
+		export webgl file from gis software
+
+		Digitial pax data
+
+		spreadsheet
+			esri
+
+		geosupport desktop edition
+			best way to geocode in nyc
+
+		stories incoperated with map
+		
+
+

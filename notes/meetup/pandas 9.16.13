@@ -1,0 +1,136 @@
+
+PANDAS
+	functions for
+		reading and generating summary staticis
+
+	works well with
+		numpy
+		pyplot
+		scipy
+
+	read functions
+		csv, tables (fixed width tables), html (uses BS)
+		more about looking at data, not heavy stats
+		what scipy is for
+
+	dataframe
+		an array of numbers
+		.xs	 print out row
+		.ix		prints out index of numbers
+			can be used to create a discutonary
+			.corr
+				create corrleation matrix
+				get a quick idea of what numbers look like w/o resorint to another libeary
+
+			head, gives you n items
+				quickly see structure of data
+		
+		.example
+			count, mean stf, min, max ect
+			string data less helpful
+
+		.rename
+			just rename column	
+			can do inplace or replace
+
+		.merge
+			basically just join like sql
+				defaults to an inner join
+
+		.pop
+			remove item from the data frame
+
+		.insert
+			'push', lets you move a column around
+
+		.columns
+
+		.T
+			transponse swaps rows and column
+
+		pivot table
+			'i dunno how this works'
+
+		pandas is better than R
+			mostly cause you get to program in python
+			R is interesting... made to stats
+				if you need to do stats, use R
+
+			if you need linear algerbra
+				use matlab or octivate
+
+			general programing and some math:
+				probably want to go with 
+
+			rpy
+				python interoperates w/ R
+
+			r in c and py in c
+				just write a c transport
+
+		which is faster?
+			haven't done a comperison
+			numpy is pretty fast, uses fotran libs
+
+			python isn't good w/ multithreading
+				GIL - only can have one system thread at a time
+
+				ipython can do clustering, not sure if that works with pandas
+
+		Don't know a ton about mathmatica
+			pretty, more expensive
+
+		why are they better than regular matrixs?
+			python - very easy to read, very easy to write
+			allows me to do the things w/ data while writting idomatic python
+
+		data cleaning
+			isNull
+			skip rows while reading csv
+
+
+		describe
+
+	series 
+		just a vector
+
+	panel
+		tensors
+		(some others for higher dimensial data structure)
+
+
+	virtualenv
+		sandbox for python liberies so it doesn't interfear w/ system python
+
+		pip is pretty good, sometimes stuff is too complicated (like matlab plot), so installers are occisonally necessary
+
+
+	Our model
+		credit score
+		yelp scores
+
+	history
+		%pylab
+		from numpy.random import randn, randint
+		import pandas as pandas
+		df = pandas.DataFrame(randn(10, 4), columns =['a', 'b', 'c', 'd'])
+		plt
+		plt(df)
+		df.plot()
+		df.plot('bar')
+		df.plot(kind='bar')
+		df.plot(kind='bar', stacked='true')
+		%pylab inline
+		inline %pylab
+		%pylab inline
+		data = Series(randn(1000))
+			data = pandas.Series(randn(1000))
+			data.hist()
+			df.plot(kind='box')
+			df.plot(kind='boxplot')
+			df.boxplot()
+		df.boxplot()
+		history
+
+	get in touch with me if you get suck on python stuff!
+	
