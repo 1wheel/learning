@@ -1,0 +1,197 @@
+NYC Angular 9.17.2013
+
+Requirements
+	Storing and delivering IP
+
+	Awesome UI
+
+	Modular Design
+
+Started w/ a google doc
+	no control over content
+	6 months
+	300 students
+	500k
+
+"jj"
+	SPA learning platform
+	transforms xml into html
+
+	load page + angular
+	pull down curri in xml over ajax
+	match xml tages w/ directives of the same now
+	css styling!
+
+
+Directives
+	extend vocab of html
+	<li ng-repeat>
+
+	can't do dynamic directives w/ angular - have to define all of the directives ahead of time
+
+	can change name of of tag from ol to li really easily!
+
+
+Backend
+	flask
+	SQLAlchemy
+	PostgresSQL
+	git submodules
+
+Wrap up
+	Decoupled styling tools
+		xml -> html -> css
+		wasn't hard to iterate on design changes!
+		confidnet we can throw front end away
+
+	Makes it easy to add chat
+
+	.complile() w/ nested diresectives made a mess
+		some of the directives are 'compondand'
+		when you render the assignment tag, you put a compile tag in, to go through dom and show it
+		solution:
+			don't compile anything inside directives
+			instead, slightly inequalgnetly: compile inside the controller
+
+Text editor for editors
+	nope!
+	thought about wordpress, better admin tools
+
+	could you turn html back into angular?
+		ehhhhhhhh you add so much junk to the html so it is nicely designed
+		systamatically doing it also generates more verbose html
+
+Other alternetive approuches besides xml
+	render
+		could just do curriculum writters write html
+		maybe a more flexable UI
+		can't really test w/ server side, way to much going over all files
+		espically since each document has multiple verison
+
+		json would basically end up being the same, xml is more human readable
+
+		database might work, but then you need an admin interface
+	store
+
+No flicker, nothing shown till page loads all the way
+
+SEO problem?
+	cornerstone problem of an SPA
+	when google curls the page, it doesn't find anything because anglular adds everything
+
+	we avoid that problem! our page is private... and public ones are static
+
+	maybe do rewrite rules for bots, put up static page
+		how do you test it
+		seems pretty painful maybe?
+
+	html snapshot!
+
+	Two solutions
+		phantomjs
+			when headless browser shows up, render client stuff server side 
+
+		brombone - does phantom for you as a service
+
+how do images work?
+	put link or image in w/ just <a> just gets pushed in
+
+	no images yet! just get served as a static image
+
+	videos? same problem, haven't approuched that
+
+	maybe route on the server that delvers static files
+		more of an issue for IP and verisoning system
+
+loss of flexability for designers?
+	using paritals in the template
+
+
+
+
+how to resolve multiple http request before starting controller?
+	resolve - special property that require all the requests return w/ promises
+	instead of creating a service, create a resolve
+
+	the nice result of that - the contructor no longer does http and you don't have to mock out a backend call
+
+
+I have a service that is keeping track of an object
+I need to the scope to rerender as the scope progresses 
+or are services not meant to be used w/ scope digest
+	you manage to get into service w/o an apply
+	the only way you can get out of an apply is w/ a setTimeout...
+	the events you're getting back need to be wrapped in root scope apply
+
+two directives, on contained within the other
+scope varible contained 
+what we need to access isn't the parent element
+but it is a json object w/ nested elements
+how can the child element access other children w/o controller through partent?
+	inject parent through the child directive
+	i'm not sure where the json objects
+	if it lives in controller, you'll need it
+
+	the general idea scope isn't a scratch pad where you put things
+	just for the UI
+	controllers should write and not read from the scope
+
+
+trying to use UI tooltip built w/ bootstrap
+data attribute doesn't get complied
+	not familuar w/ angularUI, which is a 3rd party thing...
+	data-x is a prefix that we useually strip out
+
+with in scope you can access element and 
+????
+	use $(element).data
+
+future of angular & SEO
+will this be addressed?
+will google support it?
+	need to solve in the core of the framework was diminished
+
+is ???
+	we want the community more involved
+	chop up angular into smaller pieces
+	the hope is that when we do that it'll be like node
+	routing is pretty complicated!
+		we designed w/ simplacy
+		hopefully the community will expand it
+		third parties will be able to try out some things
+
+
+what resources do you recommend for learning
+	i don't really read them lol
+	john from mendad (???) io
+
+how much javascript do you need to know to use angular
+just use dart instead?
+	coffee script, type script works just fine - anything that semantically compiles to angular
+
+	we are building a parell angular with dart
+		method.dispatch v. method.invoke
+		+ means different things
+		so we have to build seperately
+
+LIGHTING ROUND
+
+	reusable compontents
+
+	data bindings are shared between chart, map and html elements
+		angular was great for this!
+		lots of watches
+		directives are natutural way to work with this
+
+		army num bound to frame
+			on watch, on scope change 
+
+	ggtracker
+
+
+
+	made charts with divs css and ng repeat (!!!!!!)
+
+	slider breaks with ipad w/ webview outside of saferic
+
+	3d transorms do some nice transictions6
