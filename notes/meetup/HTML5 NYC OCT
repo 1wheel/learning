@@ -1,0 +1,162 @@
+HTML5 NYC OCT
+
+Angular State of Mind
+Rushaine McBean
+@copasetickid
+	Lots of MVCs now
+		backbone/knockout/angular
+	intro to the concepts behind angular
+		set you on the right path to getting started w/ angular
+
+	not a library: a framework
+		extends HTML to be more expressive
+		gets rid of direct jquery DOM maniputation
+		directives
+
+	MVC pattern
+		model - view - controller
+		encorages lose compents
+
+	two way binding
+		updates views and models at the same time
+		automatically, so we only have to care about models
+
+	dirty checking
+		don't have to worry about setters/getters
+
+	dependency injection
+		improves testing
+		ways an object can maintain references
+
+	angular components
+		controllers
+		views
+			contain templates
+			loaded after angular has run on the page
+		directives
+			extend html
+			you can write your own!
+			ng-click comes out of the box, gives you click events
+			don't put too much here! seperation of concerns
+		services
+			where your core buiness object lives
+			usually stateless
+			$http - ajax logic goes here 
+				anything built with angular pre-appended w/$
+		
+		routing
+			for a single page app
+		testing
+			built with this in mind!
+			testing helps enforce loss-coupling 
+			karma-test runner
+				jasmine for bdd
+				q-unit
+				mocha
+
+	start from 'what do i want'
+		with models and controllers
+		then add views
+	force yourself not to use jquery
+		(at first)
+	tdd
+
+cucumber append
+david souther
+	feature file
+		just a description of user behavior - not code
+	ubiqoutuous language
+		lets us talk about one spefic thing in a clear way
+	uses grunt to run all these tasks
+		grunt-cucumber
+		grunt-selenium-launcher
+	regex used to turn human langague into 
+		webdriver.js
+			offical google implementation of webdriver in javascript
+			they are pretty simlear, except they use promises so they are async
+
+CSS Animation & Transitions
+Christ Sanders
+	Advantages
+		ease of use
+			simple, declaritive. don't need any simple libs
+		performance
+			using hardware! as opposed javascript vm
+			smartly skips if you're on another tab
+		efficience
+
+	IE10+
+
+	Transitions
+		one spec to another
+
+	Animations
+		can speficy key frames along the way
+
+	When to use?
+
+	delay, duration, property (name of props that they'll apply to), timing-function (ease in)
+
+	translate is more performant than top and left
+
+	sass is crazy!
+
+Coding at Scale:
+@MikePetrovich
+	not just making small sites anymore
+	ayi
+		only full time front end engineer
+		100k LOC
+	dinesy web
+		orlando
+		20 -> 200 devs in a year
+		how do you work across the globe on such a huge project
+	patterns and philospys about doing large scale dev effectivily
+
+	consistency > correctness
+		if everyone is doing the same thing, much eaiser for collaberation to happen
+		even just tabs or spaces becomes an issues
+		should look like a single person built the app
+		look at any file and understand what is going on
+		understand immediently what is going on, no cognitive load to understand is going on
+
+	clear
+		not clever
+		tendancy to show off as engineers
+		focus on the clarity of the code
+			while I understand this in 6 months
+			important that the code is self expressive
+		even at the cost of opitimization or even good artechture
+		code is written many more times than it is read
+
+	code planning + code review
+		can this be more clear
+
+	tests for everything
+
+	keep it shippagble
+		feature branches
+			can't have everyone just merge in at the same time!
+		just work from the master branch - always shippable
+			insulate you problems!
+			if you have good tests, you can refactor safely
+			tests controll touch points between different compenents
+
+	yagni
+		you aren't gonna need it
+		just adds more crufts/bloat
+
+	tactics
+
+	need consistant design
+		so code can be consistant
+		atlassian design guidelines
+
+	scope css selectors, avoid IDs
+		big CSS harry roberts
+
+	manage state, not DOM
+		don't tie html to javascript, really hard and risky to change stuff
+
+	use simple composition
+	

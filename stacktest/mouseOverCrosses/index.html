@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+rect{
+  stroke: black;
+  stroke-width: 0;
+}
+
+
+</style>
+<body>
+
+<script src="d3.v3.js"></script>
+
+<script>
+
+var spacing = 20
+    width = 400,
+    height = 500
+
+var svg = d3.select('body').append('svg')
+    .attr('width', width)
+    .attr('height', height)
+
+var sizeScale = d3.scale.linear()
+    .domain([0, distance(0, width, 0, height)])
+    .range([1.4, 0])
+
+var data = []
+d3.range(0, width, spacing).forEach(function(x){
+  d3.range(0, height, spacing).forEach(function(y){
+    data.push({x: x, y: y})
+  }) 
+})
+
+svg.append('defs').append('mask').attr('id', 'mask')
+  .selectAll('.shape')
+    .data(data).enter()
+  .append('g')
+    .attr('transform', function(d, i){ return 'translate(' + d.x + ',' + d.y + ')' })
+  .append('g')
+    .classed('shape', true)
+  .append('circle')
+    .attr('r', spacing/2)
+    // .attr('width', spacing/2)
+    // .attr('height', spacing/2)
+    // .attr('x', -spacing/4)
+    // .attr('y', -spacing/4)
+    .attr('fill', 'white')
+
+svg.append('image')
+    .attr('xlink:href', 'me.jpg')
+    .attr('height', height)
+    .attr('width', width)
+    .attr('mask', 'url(#mask)')
+
+svg.on('mousemove', function(d){
+  var xCord = d3.mouse(this)[0]
+  var yCord = d3.mouse(this)[1]
+  svg.selectAll('.shape')
+      .attr('transform', function(d, i){
+        var scale = sizeScale(distance(xCord, d.x, yCord, d.y))
+        var θ = Math.atan2(xCord - d.x, -(yCord -d.y))*180/Math.PI;
+        return 'scale(' + scale +  ') rotate(' +  θ + ')'
+      })
+})
+
+function distance(x1, x2, y1, y2){
+  return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+}
+
+
+</script>
+
