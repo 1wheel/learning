@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.container{width: 950px;
+    height: 345px;
+    float: left;
+    clear: right;
+    margin-top: 20px;
+    margin-left: 9px;}
+    
+    .button{
+    position:absolute;
+    background-color: #ccc;
+    padding:10px 10px 10px 10px;}
+    
+    #button1{
+    top:340px;
+    left:20px;}
+    
+    #button2{
+    top:340px;
+    left:100px;}
+    
+    .axis path{
+    display: none;}
+    
+    .axis text{
+    font-family: sans-serif;
+    font-size: 10.5px;}
+    
+    .axis line {
+    fill: none;
+    stroke: lightgray;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;}
+    
+    .line {
+      fill: none;
+      stroke: RGB(168, 192, 215);
+      stroke-width: 3.5px;}
+
+</style>
+<body>
+
+
+  <div class = "container" id = "GDP"></div>
+  <div id = "button1" class = "button">Next</div>
+  <div id = "button2" class = "button">Restart</div>
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+<script>
+
+
+//Global variables
+var margin = {top:25, bottom:20, left:20, right:10},
+  height = 245 - margin.top - margin.bottom,
+  width = 950 - margin.left - margin.right,
+  parseDate = d3.time.format("%m/%d/%Y").parse,
+  formatFourDigitYear = d3.time.format("%Y");
+
+var dataGDP = [
+  {date:  "1/1/2008", GDPreal:  "2.8"},
+  {date:  "4/1/2008", GDPreal:  "0.6"},
+  {date:  "7/1/2008", GDPreal:  "-2.1"},
+  {date:  "10/1/2008", GDPreal: "-4.3"},
+  {date:  "1/1/2009", GDPreal:  "-6.8", GDPforecast:  "1.63"},
+  {date:  "4/1/2009", GDPreal:  "-6.3", GDPforecast:  "1.40"},
+  {date:  "7/1/2009", GDPreal:  "-5", GDPforecast:  "0.56"},
+  {date:  "10/1/2009", GDPreal: "-2.5", GDPforecast:  "-0.29"},
+  {date:  "1/1/2010", GDPreal:  "0.5",  GDPforecast:  "-0.42"},
+  {date:  "4/1/2010", GDPreal:  "2",  GDPforecast:  "-0.25"},
+  {date:  "7/1/2010", GDPreal:  "2.4",  GDPforecast:  "1.67"},
+  {date:  "10/1/2010", GDPreal: "1.8",  GDPforecast:  "2.94"},
+  {date:  "1/1/2011", GDPreal:  "1.7",  GDPforecast:  "2.94"},
+  {date:  "4/1/2011", GDPreal:  "0.8",  GDPforecast:  "2.97"},
+  {date:  "7/1/2011", GDPreal:  "1.0",  GDPforecast:  "2.49"},
+  {date:  "10/1/2011", GDPreal: "1.1",  GDPforecast:  "2.42"},
+  {date:  "1/1/2012", GDPreal:  "0.6",  GDPforecast:  "2.56"},
+  {date:  "4/1/2012", GDPreal:  "0",  GDPforecast:  "2.49"},
+  {date:  "7/1/2012", GDPreal:  "0.1",  GDPforecast:  "1.94"},
+  {date:  "10/1/2012", GDPreal: "0",  GDPforecast:  "1.21"},
+  {date:  "1/1/2013", GDPreal:  "0.3",  GDPforecast:  "2.23"},
+  {date:  "4/1/2013", GDPreal:  "1.5",  GDPforecast:  "2.51"},
+  {date:  "7/1/2013", GDPforecast:  "1.87"},
+  {date:  "10/1/2013", GDPforecast: "1.45"},
+  {date:  "1/1/2014", GDPforecast:  "1.48"},
+  {date:  "4/1/2014", GDPforecast:  "1.64"}
+];
+
+dataGDP.forEach(function(d) {
+  d.date = parseDate(d.date);
+  d.GDPreal = +d.GDPreal;
+  d.GDPforecast = +d.GDPforecast;
+ });
+
+var yScaleGDP = d3.scale.linear()
+  .domain([-8,4])
+  .range([height, 0]);
+  
+var xScaleGDP = d3.time.scale()
+  .domain([dataGDP[0].date, dataGDP[dataGDP.length - 1].date])
+  .range([0, width]); 
+  
+var yAxisGDP = d3.svg.axis()
+  .scale(yScaleGDP)
+  .ticks(5)
+  .tickSize(-width, 0, 0)
+  .orient("left");  
+  
+var xAxisGDP = d3.svg.axis()
+  .scale(xScaleGDP)
+  .ticks(10)
+  .orient("bottom");  
+
+var canvasGDP = d3.select("#GDP").append("svg")
+  .attr("width", width)
+  .attr("height", height + margin.top + margin.bottom)  
+  .append("g")
+  .attr("transform", "translate("+margin.left+","+margin.top+")");
+
+canvasGDP.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxisGDP);  
+      
+canvasGDP.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0,0)")
+      .call(yAxisGDP);
+      
+var realGDPline = canvasGDP.append("line")
+    .attr("class", "line");
+    
+var focus = canvasGDP.append("g")
+      .attr("fill", "orange");  
+      
+focus.append("circle")
+      .attr("r", 5);      
+      
+focus.append("text")
+      .attr("x", 0)
+      .attr("dy", "-0.7em"); 
+ 
+var counter = 0;
+var lineGen = d3.svg.line()
+    .x(function(d, i){
+      return xScaleGDP(i <= counter ? d.date : dataGDP[counter].date); })
+    .y(function(d, i){
+      return yScaleGDP(i <= counter ? d.GDPreal : dataGDP[counter].GDPreal); })
+
+var pathLine = canvasGDP.append('path').datum(dataGDP)
+    .attr('d', lineGen)
+    .classed('line', true)
+
+function start() {      
+
+    counter = 0;
+
+    realGDPline
+    .attr("x1", xScaleGDP(dataGDP[counter].date))
+    .attr("y1", yScaleGDP(dataGDP[counter].GDPreal))
+    .attr("x2", xScaleGDP(dataGDP[counter].date))
+    .attr("y2", yScaleGDP(dataGDP[counter].GDPreal)); 
+
+    focus.attr("transform", "translate(" + xScaleGDP(dataGDP[counter].date) + "," + yScaleGDP(dataGDP[counter].GDPreal) + ")"); 
+    
+    focus.select("text").text(dataGDP[counter].GDPreal);
+        
+} 
+
+start();  
+       
+
+$("#button1").mouseover(function(){
+$(this).css( "background-color", "#666" ).css( "color", "white" );
+}).mouseout(function(){
+$(this).css( "background-color", "#ccc" ).css( "color", "black" );
+}).click(function(){
+movefocus();
+});
+
+$("#button2").mouseover(function(){
+$(this).css( "background-color", "#666" ).css( "color", "white" );
+}).mouseout(function(){
+$(this).css( "background-color", "#ccc" ).css( "color", "black" );
+}).click(function(){
+start();
+});
+  
+
+function movefocus() {
+
+  counter++;
+  var d = dataGDP[counter] 
+  
+
+
+  realGDPline
+    .transition()
+    .duration(1200)
+    .attr("x2", xScaleGDP(dataGDP[1].date))
+    .attr("y2", yScaleGDP(dataGDP[1].GDPreal));
+    
+  pathLine.transition().duration(1200)
+      .attr('d', lineGen)
+
+  focus
+    .transition()
+    .duration(1200)
+    .attr("transform", "translate(" + xScaleGDP(d.date) + "," + yScaleGDP(d.GDPreal) + ")");  
+    
+  focus
+    .transition()
+      .delay(1200)
+      .select("text").text(dataGDP[counter].GDPreal);     
+          
+}      
+    
+
+</script>
+

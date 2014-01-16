@@ -1,0 +1,38 @@
+NYC HTML5 JAN 2013
+
+flot charts - charting w/o d3
+	@njgriffiths
+
+	have to support ie7 since we package content for older people
+
+	very simple to use, default don't look that great
+
+	easy animations
+
+
+	d3 canvas
+
+better dev w/ grunt
+	node.js/npm/grunt-cli
+
+	contrib-*
+
+	sprite sheets
+
+	scaffolding
+		-init
+
+		yeoman
+			yo, grunt, bower
+			generators
+
+		grunt concerent
+		load-grunt-task
+
+art-up
+	jenn.ws
+	@jennschiffer
+
+	wider audience for art
+	
+

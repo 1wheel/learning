@@ -1,0 +1,63 @@
+NYC D3 Dec 2013
+
+Visualizing NP Complete Problems
+
+Polina Viro
+
+Class of problems
+	polynomial time to check solution
+	super polynomial time to solve
+
+	examples
+		traveling salesmen
+		nap stack
+
+hard to explain with words/use d3!
+	where is the data?
+
+generate the data
+	np-food
+
+
+  window.setTimeout(function() {
+    var c = d3.select($('.close-cost')[0]); 
+    c.on('click')(c[0][0]);
+  }, nodes.length < 15 ? 1500 : 5500);
+
+  saveImg();
+better way of doing this
+
+
+d3 & ufora
+
+	fora really great for parallel computing
+
+	it does parallelism for you!
+		unroll forloops just like magic
+
+	runs on clusters
+		distrubutes work and data w/o you having to think about it
+
+	once we have a browser based ide... why not put d3 into the browser
+
+	on github/ufora
+
+
+gender map
+
+	@pauldechov
+
+	d3 + ember
+
+	custom layout
+
+
+	switch to canvas if you have too many elements
+
+	STAGGERED DELAY
+
+	css transitions are faster when you have 500 elements, goes faster
+
+	numeric tweenz
+	
+	slid.es/dechov/gender-map

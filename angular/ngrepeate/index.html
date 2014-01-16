@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo</title>
+  
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js'></script>
+  
+  
+  <style type='text/css'>
+    img{ display: block; margin: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);}
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+var app = angular.module("myApp",[]);
+
+app.controller("imgController",function($scope){
+    $scope.imgs = [{url:"http://www.piyut.org.il/Files/RFile/2579.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1565.jpg"},
+                   {url:"http://www.piyut.org.il/Files/RFile/1567.jpg"}] 
+    $scope.log = function(d){ console.log(d); }
+    $scope.activeImg = 1
+});
+
+app.directive('loadable', function () {       
+    return {
+        link: function(scope, element, attrs) {   
+            element.bind("load" , function(e){ 
+    
+                scope.img.dimensions = {
+                    height: element[0].naturalHeight,
+                    width: element[0].naturalWidth
+                }                
+            });
+            
+            scope.logD = function(){ console.log([scope.img, 'Dz'])}
+
+            scope.$watch('activeImg', function(current){
+              if (scope.activeImg == scope.$index){
+                n = element[0];
+                console.log([scope.activeImg, scope.$index, n]);
+                setTimeout(function(){
+                  n.scrollIntoView();
+                }, 2000);
+                // n.remove();
+                // element[0].scrollIntoView();   
+              }
+            })
+        }
+    }
+});
+//]]>  
+
+</script>
+
+
+</head>
+<body ng-app="myApp">
+  <div ng-controller="imgController">
+
+    <input type="text" ng-model="activeImg" placeholder="Enter a name here">
+
+    <img 
+      ng-repeat="img in imgs" 
+      ng-src="{{img.url}}" 
+      ng-style="{{img.dimensions}}" 
+      loadable 
+      ng-click="logD()"/>
+</div>
+  
+</body>
+
+
+</html>
+
