@@ -1,0 +1,50 @@
+D3 Jan 2014
+
+US gov
+	make data accessable
+	hard to look up
+	visualization make large numbers comprehensable 
+
+	double to zoom v single click is confusing
+
+	even a little bit of text isn't read! way more engaging to click on things
+
+	axis aren't style correctly, just large black block
+
+	no way to zoom in and out without clicking all the way through
+
+	don't try to make an intergrated dashboard
+		lazer focus on a signle aspect that is interesting
+		you've built a custom data exploration tool and can share interesting things that you've 
+
+		hard to find data
+
+	helpful updating text isn't that useful - no fun to look out compared to flashing things
+
+
+	more of a single page app, not just a app
+	should have switched to a javascript framework
+
+
+influxDB
+	events
+	metrics
+
+	written in go
+		no external depencies - no mongo or anything
+
+	time series
+		like tables
+
+	points or events
+		rows, but schemeless
+		signle levvle
+
+
+	sql style time series
+		eaiser to use
+
+	percentives
+		lag, lead, funnel
+
+	need to build your own custom uit
