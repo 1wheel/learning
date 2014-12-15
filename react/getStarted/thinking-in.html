@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title>Hello React</title>
+    <script src="http://fb.me/react-0.12.1.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+
+    <script type="text/jsx">
+var ProductCategoryRow = React.createClass({
+  render: function(){
+    return (<tr><th colSpan="2">{this.props.category}</th></tr>)
+  }
+})
+
+var ProductRow = React.createClass({
+  render: function(){
+    var name = this.props.product.stocked ?
+      this.props.name :
+      <span style={{color: 'red'}}>
+        {this.props.product.name}
+      </span>
+
+    return (
+      <tr>
+        <td>{name}</td>
+        <td>{this.props.product.price}</td>
+      </tr>
+    )
+  }
+})
+
+var ProductTable = React.createClass({
+  render: function(){
+    var rows = []
+    var lastCategory = null
+    this.props.products.forEach(function(d){
+      if (d.category != lastCategory){
+        rows.push(<ProductCategoryRow category={d.category} key={d.category} />)
+      }
+      rows.push(<ProductRow product={d} key={d.name} />)
+      lastCategory = d.category
+    })
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    )
+  }
+})
+
+var SearchBar = React.createClass({
+  render: function(){
+    return (
+      <form>
+        <input type='text' placeholder='Search...' />
+        <p>
+          <input type='checkbox' />
+          {' '}
+          Only show products in stock
+        </p>
+      </form>
+    )
+  }
+})
+
+var FilterableProductTable = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <SearchBar/>
+        <ProductTable products={this.props.products} />
+      </div>
+    )
+  }
+})
+
+
+var PRODUCTS = [
+  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
+  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
+  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
+  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
+  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
+  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
+];
+
+React.render(<FilterableProductTable products={PRODUCTS} />, document.body)
+    </script>
+  </body>
+</html>
