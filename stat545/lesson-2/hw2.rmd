@@ -6,12 +6,38 @@
        keep_md: true  
 
 ---
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
 
 Load data from URL
 ```{r}
 gdURL  <-  "http://tiny.cc/gapminder"
 gDat  <- read.delim(file = gdURL)
-head(gDat)
+```
+
+read.delim creates a dataframe
+```{r}
+class(gDat)
+```
+
+There are 1704 rows
+```{r}
+summary(gDat)
+```
+
+nrow only gets the number of rows
+```{r}
+nrow(gDat)
+```
+
+column flavors
+```{r}
+class(gDat$year)
+class(gDat$country)
+class(gDat$pop)
+class(gDat$continent)
+class(gDat$gdpPercap)
 ```
 
 Load ggplot2
@@ -25,3 +51,7 @@ p + geom_point()
 
 ```
 
+Every countries growth rate
+```{r}
+ggplot(gDat, aes(x = year, y = pop)) + geom_point() + scale_y_log10() + facet_grid(~ continent) + geom_line(aes(group = country))
+```
