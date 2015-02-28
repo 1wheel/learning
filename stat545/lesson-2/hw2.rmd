@@ -1,0 +1,27 @@
+---
+   title: "Gap exploration"  
+   author: "Adam Pearce"  
+   output:  
+     html_document:  
+       keep_md: true  
+
+---
+
+Load data from URL
+```{r}
+gdURL  <-  "http://tiny.cc/gapminder"
+gDat  <- read.delim(file = gdURL)
+head(gDat)
+```
+
+Load ggplot2
+```{r}
+library(ggplot2)
+```
+
+```{r, echo=FALSE}
+p  <- ggplot(gDat, aes(x = log10(gdpPercap), y = lifeExp))
+p + geom_point()
+
+```
+
