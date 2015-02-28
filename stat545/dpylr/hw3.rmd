@@ -1,0 +1,80 @@
+---
+   title: "hw3"  
+   author: "Adam Pearce"  
+   output:  
+     html_document:  
+       keep_md: true  
+
+---
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+Load data from URL
+```{r, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+
+gdURL  <-  "http://tiny.cc/gapminder"
+gDat  <- read.delim(file = gdURL)
+
+gtbl <- tbl_df(gDat)
+```
+
+###Get the maximum and minimum of GDP per capita for all continents.
+
+```{r}
+GDPextent <- gtbl %>%
+  select(year, country, continent, gdpPercap) %>%
+  arrange(continent, year) %>%
+  group_by(continent) %>%
+  filter(min_rank(desc(gdpPercap)) < 2 | min_rank(gdpPercap) < 2)
+
+(GDPextent)
+```
+
+Scatter plot connecting max and min gdpPerCap
+```{r, echo=FALSE}
+ggplot(GDPextent, aes(x = year, y = gdpPercap, color=continent)) + geom_point() +geom_line()
+```
+
+Haiti has suffered a steep decline
+```{r, echo=FALSE}
+ggplot(gtbl  %>% filter(country == "Haiti"), aes(x = year, y = gdpPercap, color=country)) + geom_point() + geom_line()
+```
+
+###Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
+```{r}
+meanByYear  <- gtbl  %>% 
+  group_by(year)  %>%  
+  summarise(mean = mean(lifeExp), wmean = weighted.mean(lifeExp, pop))
+```
+
+
+```{r}
+ggplot(meanByYear, aes(x = year, y = wmean)) + geom_point() + geom_line()
+```
+
+###The determine how many countries on each continent have a life expectancy less than this benchmark, for each year.
+
+```{r}
+gtbl  <-  gtbl %>%
+  mutate(bench = meanByYear$wmean[match(year, meanByYear$year)],
+        benchDif = lifeExp - bench,
+        belowBench = lifeExp < bench)
+
+head(gtbl)
+```
+
+Generate grouped data
+```{r}
+byContYear = gtbl  %>% 
+    group_by(year, continent)  %>% 
+    summarize(n_obs = n(),
+              percentBelow = mean(belowBench))
+```
+
+Show change over time
+```{r}
+ggplot(byContYear, aes(x = year, y = percentBelow, color=continent)) + geom_point() +geom_line()
+```
