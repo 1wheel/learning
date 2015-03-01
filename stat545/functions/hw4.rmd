@@ -1,0 +1,89 @@
+---
+   title: "Functions"  
+   author: "Adam Pearce"  
+   output:  
+     html_document:  
+       keep_md: true  
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(robustbase)
+
+gdURL  <-  "http://tiny.cc/gapminder"
+gDat  <- read.delim(file = gdURL)
+
+gtbl <- tbl_df(gDat)
+```
+
+Fit a regression using ordinary least squares and a robust technique.
+
+```{r message=FALSE, warning=FALSE}
+j_coefs <- ddply(gDat, ~ country + continent, function(gDat, offset = 1952) {
+  ols <- lm(lifeExp ~ I(year - offset), gDat)
+  rbs <- lmrob(lifeExp ~ I(year - offset), gDat, setting = "KS2011")
+  ols_coef <- setNames(coef(ols), c("o_int", "o_slope"))
+  rbs_coef <- setNames(coef(rbs), c("r_int", "r_slope"))
+  dif_coef <- setNames(c(ols_coef[1] - rbs_coef[1], ols_coef[2] - rbs_coef[2]),
+                       c("d_int", "d_slope"))
+  c(ols_coef, rbs_coef, dif_coef)
+})
+
+j_coefs
+```
+
+Plot the difference in estimated parameters under the two approaches
+```{r}
+p  <- ggplot(j_coefs, aes(x = d_slope, y = d_int, label = country)) + geom_point()
+p + geom_text(hjust=0, vjust=0, size=3)
+```
+
+China and Zimbabwe are the biggest outliers.
+
+```{r}
+j_coefs  %>% filter(country == 'China' | country == 'Zimbabwe')
+```
+
+The robust regression throws out some of the post WWII and great leap forward years
+```{r}
+gDat  %>% filter(country == 'China')
+
+ggplot(gDat  %>% subset(country == 'China'), aes(x = year, y=lifeExp)) + geom_point()
+```
+
+
+The opposite happens with Zimbabwe - the  linear increases in life expectency before the 90s results in the robust regression giving a very low weight to the subsequent 'outlier' years. 
+```{r}
+gDat  %>% filter(country == 'Zimbabwe')
+
+ggplot(gDat  %>% subset(country == 'Zimbabwe'), aes(x = year, y=lifeExp)) + geom_point()
+```
+
+
+
+Color dots by weight of robust regression?
+
+
+Divergence between increases in lifeExp and gdpPerCap?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
