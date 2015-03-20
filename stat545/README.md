@@ -1,0 +1,1 @@
+https://stat545-ubc.github.io/syllabus.html

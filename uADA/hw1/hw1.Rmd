@@ -1,0 +1,68 @@
+---
+   title: "hw1"  
+   author: "Adam Pearce"  
+   output:  
+     html_document:  
+       keep_md: true  
+---
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(GGally)
+```
+
+Load data
+```{r, echo=FALSE}
+mobility <- read.csv("mobility.csv", header=TRUE)
+```
+
+Mobility map 
+
+```{r, echo=FALSE}
+ggplot(mobility  %>% filter(Longitude > -130), aes(x=Longitude, y=Latitude, color=Mobility)) + geom_point(size=5)
+```
+
+Mobility is lowest in the South and on the coasts; it is highest in the midwest.
+
+Population v Mobility
+```{r}
+ggplot(mobility, aes(x=Population, y=Mobility)) + scale_x_log10() + geom_smooth(lwd = 3, se = FALSE, method = "lm") + geom_point(alpha=1/3, size=3)
+
+lm(formula = Mobility ~ log10(Population), data=mobility
+
+```
+
+Areas with higher populations tend towards lower mobility. This relationship doesn't look linear. 
+
+```{r}
+mobility %>% 
+  select(Mobility, Income, Seg_racial, Share01, School_spending, Violent_crime, Commute) %>%
+  ggpairs(axisLabels="none") + 
+  theme_bw()
+```
+
+None of these correlations looks too odd, expect perhaps mean income being positivly coorelated with mobility. Segreation, violent crime and the 1%'s share of income are negitivly correlated while commute time and schools are positivily correlate with mobility.
+
+```{r}
+fit <- lm(formula = Mobility ~ log10(Population) + Income + Seg_racial + School_spending + Share01, data=mobility)
+summary(fit)
+```
+
+None of the signs have changed.
+
+```{r}
+ p <- mobility  %>% filter(Name == 'Pittsburgh')
+
+predict.lm(object = fit)
+```
+Actual mobility is .094, predicted is 0.12487204
+
+
+
+
+
