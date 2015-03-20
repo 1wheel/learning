@@ -53,6 +53,14 @@ fit <- lm(formula = Mobility ~ log10(Population) + Income + Seg_racial + School_
 summary(fit)
 ```
 
+(Intercept)        1.872e-01  1.515e-02  12.356  < 2e-16 ***
+log10(Population) -3.629e-02  3.097e-03 -11.717  < 2e-16 ***
+Income             2.351e-06  3.364e-07   6.988 6.53e-12 ***
+Seg_racial        -6.844e-02  1.733e-02  -3.948 8.68e-05 ***
+School_spending    6.447e-03  1.399e-03   4.609 4.81e-06 ***
+Share01           -1.060e-03  3.281e-04  -3.231  0.00129 ** 
+
+
 None of the signs have changed.
 
 ```{r}

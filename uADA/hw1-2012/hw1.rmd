@@ -1,0 +1,37 @@
+---
+   title: "hw1"  
+   author: "Adam Pearce"  
+   output:  
+     html_document:  
+       keep_md: true  
+---
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plyr)
+library(dplyr)
+library(ggplot2)
+```
+
+load data
+```{r}
+data <- read.table(dataStr, header=TRUE)
+
+ggplot(data  %>% filter(Longitude > -130), aes(x=Longitude, y=Latitude, color=MedianHouseValue)) + geom_point(size=2)
+```
+
+Linear Regression
+```{r}
+fit = lm(formula = MedianHouseValue ~ MedianIncome + MedianHouseAge + TotalRooms + TotalBedrooms + Population + Households + Latitude + Longitude, data = data)
+summary(fit)
+```
+
+Median income looks like it has biggest impact on housing prices. I'm not sure why the sign of total rooms and total bedrooms is different
+
+QQ plot
+```{r}
+plot(fit, which=2)
+```
+Residuals are not normally distrubuted 

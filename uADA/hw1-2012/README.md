@@ -1,0 +1,1 @@
+http://www.stat.cmu.edu/~cshalizi/uADA/12/hw/01/hw-01.pdf
