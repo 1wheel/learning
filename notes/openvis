@@ -1,0 +1,300 @@
+jv 
+	intro, background
+
+
+webgl @philogb
+	
+	what is webgl
+		api to access gpu
+
+		france mobiliy
+			40000 counties - web gl can actually handle
+
+		wind patterns
+			binary array buffer to combpress data
+			dump data in and explore without lag
+
+		surface explorer	
+			mac calc, uses loop to show parameterization
+
+		temperatue anomalise
+
+
+		realtime data analysis
+
+			color decomposition
+				use transperent shape to prevent ocuculsion
+
+		story telling
+			ian machlin - eye catching, imendly isnteresting
+
+		scientfic viz
+			line intergral convultions
+				build to use the gpu, no lag
+				show fields
+
+		data art
+			twitter revine loops
+				fractual space filling algorthism
+				only possible with webgl
+
+
+	webgl api
+		js api store an array of floats in a buffer that can be access by the gpu
+
+		glsl api - pipeline of processes that gets handled by the gpu
+			vertex shader
+				1 to 1 mapping between input and output points
+				programable
+
+			fragment shader
+				looks at more than one point
+
+			
+			vertex shader
+
+			triangle assubly
+				not programable, tranforams points into faces
+
+			rasterization
+				3d shapes get translated into picutes
+
+			fragment shader
+
+
+
+			glsl - dsl for graphics
+				c-ish
+				build in types for graphics - vectors, matrics, 
+				build in functions for graphics - reflect
+				operator overload! 
+
+
+
+			hopf fibration
+				explore 4-d shapes by projecting into 3d
+				sterographic project preservers spheres across dimension projection
+
+				instanced arrays
+
+				fibers view
+
+				interactions
+					everything renders effeintly, can't click on anything
+
+				hover only gives you color
+					each pixes maps to a unique color
+					decode color position
+
+
+	uses gpu - million+ object, fast
+
+	low level - use threejs, philogl, stackjs
+
+	opencl, diferent spec
+
+
+
+mapping the cosmos
+  
+
+
+nigel homes - humor
+	chartjunk!
+
+	contex matters!
+
+	CONTEX
+
+	no permission given to tuffte - not bitter about it
+
+	in print, a magizing, a galler, interacting on a computer
+
+	contect by making people smile
+
+	friendly, approchable
+
+	humor, good humor, good feelings and emotions
+
+	emotions v intellect
+
+
+	data visualizers v inforgraphics
+
+	editing, not simplifying but clarifying
+
+	don't show everything!
+
+	design differently for different medium
+
+	don't be seducded by new tech - mozart wrote bad music for the harmonic
+
+
+
+
+the human side being a digitla practitor
+	our tools are soo utitrain - why?
+
+	expression v. utility
+
+	our tools are expressive and have interntions
+
+
+	visual music - emtionally distill what 
+		cell drawing animations is so tedious
+
+	augmented - like tween js
+
+	two-js renders to webjl,svg, canvas.
+		very processing like
+
+
+	why make a tool?
+		learning
+		community
+		reusabilty
+
+
+
+
+blindfolded cartography - bostography
+	axis maps: interactive web maps
+
+	designin interactive maps for data you can't see yet
+
+	traditional cartography allows for perfectionism
+
+	tale of compromises
+
+	classifcation
+		john nelson - don't lie with data
+
+		distriubtions in design v. reality
+
+		will the map  be useful and look good
+		will the chrt be useful and look good
+		are the breaks meaningful
+			if you're mapping income, maybe show a break at the poverty line
+			diverging, show a break at the mid point
+		are the breaks understandable
+			std dev isn't intutufi
+		are the breaks pretty numbers
+
+		jenks naturla breaks
+
+		quantile breaks
+			guardiness spread of colors
+
+		use percentiles
+
+		percentiles based on unique values
+
+
+
+	density
+		circles overlap - sort by size
+
+
+	handling missing years
+
+
+	text
+		max height and overflow auto
+
+		thoughtfull about how you abrivate - maybe last digit is most signifiengt
+
+		mind your number formating 
+			plural
+			spacing
+
+			1000 thosound ? just say 1 million
+				axis and scale ticks are nice!
+
+
+  lorem ipsum map
+  	roth and harrower can be quire determential
+
+  	map design doesn't match UI, looks ugly
+
+  	bad fake data can also text your code
+
+  	smart dummy data - carolyn fish
+  		use OSM to stand in for more complete but inaccessible data
+
+
+
+
+
+  kosara - storytelling and data
+  	why
+  		stories are all around us
+  		we are really good with them
+
+
+	    stories make you pay attenetion
+
+	    memomery, stickyness
+	    	how do you tell parts of stories to market
+
+	    not for exploration or analysis, but communtication
+	    when you want to change people's minds
+
+	    like velco, just more hooks
+	    	you have to remember to remember something else
+	    	stories are those pieces of connected tissues
+
+
+
+    how
+    	techniques
+    		connected satter plot
+	    		transforms from sparse set of circles
+	    		to a story that you read over time with annoations
+
+	      isotypes
+	      	turn firgures into stories and remember them better than bars
+
+
+	  neil coh, visual narrative structutre; cognitive side of comics
+	  	eipr
+
+
+	  scrolling isn't great, thinks are demeractied like steps so we struggle to remember (what?)
+
+
+	  oh man, everyone rememebers who the women in the story was
+	  zeigarnik effect - we rememeber things that are unfinished
+	  	waiters remembered orders very well, until they were payed, then they forgot
+
+
+
+
+Lichen
+	visual programming to encorage collaberation with non programmers
+
+	show predictive model, client side js
+
+
+
+
+calderwood
+
+emobied viewing
+	visual processing
+
+	loops, cycles
+
+	storytelling
+
+
+
+
+
+
+
+
+
+
+
+
+
