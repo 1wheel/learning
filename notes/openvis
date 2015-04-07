@@ -275,6 +275,385 @@ Lichen
 	show predictive model, client side js
 
 
+hannah fairfield
+	start with blocks
+
+
+interactive data vis with react - ilya boyandin
+	mid and large scale vis at interactive things
+
+	flexiable, scalable compent model
+
+	facetes/personal - > engaging
+
+
+	state is hard
+
+	grammer of graphics
+		we can declaritivly define a graphic
+
+
+
+	d3 reusable chart
+		component model
+		how to handle state
+		data flow
+
+	how do we compose components
+
+
+	model view controller
+
+	d3 in view
+
+
+	get app state right
+	define how state is rendered
+
+
+	ƒ: app state -> DOM
+
+
+	requires full render on state change
+
+	virtual DOM
+
+
+	React.render(
+		React.DOM.div({className:'greeting' }, 'Hello!'),
+		document.body
+	)
+
+	JSX transpiles to js
+	React.render(
+		<div className='greeting'>Hello</div>
+		document.body
+	)
+
+
+	animation
+		react doesn't excel
+		use t to tween, but that requires diff on every tick
+		very slow for particle simulation
+
+		transition group sort of works?
+		react tween state
+
+		devolp stuff without animatinos
+
+
+	flux
+	relay
+	immutable-js
+		clojure light
+		libery for sets maps array, shouldComponentUpdate becomes very effient
+
+
+	state internal or external to compenent
+
+	shouldComponentUpdate
+		stops us from doing expensive computations on every rerender
+
+	server side rendering
+		better for seo
+
+
+	dev tools 
+	hot code reloading - webpack
+
+	testing?
+
+
+
+
+Datavis on a deadline - Alyson Hurt
+	cooking is hard - half hour recipe takes like an hour and half!
+	mise en place
+
+	preping everything ahead of time makes everything go more quickly
+
+	set up tools and processes ahead of time
+
+	our tools
+		macs
+		s3
+		flask
+		bake out flat files to s3
+		static sites - no mainence, handle traffic better
+
+		little bit of python, mostly js + d3
+
+
+	how to set up your computer
+		whenever someone starts,
+		they start from schratch following the blog post and update it
+
+
+	version control
+		copying/editing on the serer is not the way to go
+
+	style guide
+
+	starter code
+		big standalone
+			- clone the app template
+
+
+		smaller works that are embed
+			- preset bar, area, chart
+			do it once and reuse
+			but not composeable - essiently just automating copying and pasting between projects, but there's gotta be a better way
+
+
+		design patterns
+			- responsive
+			- lock the aspect ration; 4/3
+			- adjust tick marks, move labels around
+			- just destroy and redraw for simple charts
+
+			- css media queries to shift columns into stacked rows
+
+
+		use google spreadsheets as a minicms
+			copy text from python - ginatext
+			key value pairs
+			refer to keys on template 
+
+			but all text in the project into the google spreadsheet
+
+
+			also put structred data in a spreadsheet
+				just write as json to use with d3
+
+
+			configuration
+
+		archieml uses google docs, a little more natural for writing long
+
+		seperate code and text
+			WORK IN PUBLIC
+			lawyers cool with us open sourcing code
+
+		manage larger assets in .gitignore assets folder
+			publish out to s3, push to all users
+			no versions, assume they don't change
+
+
+		crime clearence rates
+
+
+		embedding
+			all in on iframes to encapslate work
+
+
+		how to they handle updates to old projects
+			probably not
+
+
+
+
+
+
+
+
+
+user centered visualization research - lane harrison
+	exploratory - expository
+	demand accurate and precise data vis
+
+
+	building the same things over and over again
+	how do i make a more opitimal design choice
+
+	scatter plot v parell v line v stack bar chart
+	8 c 2 -> lots of pairs to test!
+
+	use model base eval instead
+		models of performance and be dompared directly and effiiently
+		they are scalable and falsiable
+		to be effective, avoid overfitting etc, models need to be grounded in theory
+
+	psychophysiological methodoology
+
+
+	weber's law
+		9 charts w/ bivarite data
+
+
+
+
+Dominikus Baur - Weighing performance against pain
+	paper is great!
+
+	or maybe tufte stone sctuputers
+
+	doesn't matter for simple things, like bar charts
+
+
+	oecd better life index
+		orginal version was in flash
+			fast built in!
+			but propertary and killed
+
+		40 canvas elements being moved around the screen
+			awkwardly written
+			little condiations, very weird
+
+	as smooth as ryan gosling
+		everything in web gl
+
+
+	apple caved, webgl on ios!!
+
+
+	on broadway
+		canvas
+			redraw v scale
+
+		30 mb of images
+
+	performance basics
+		know when to stop
+
+		know your tools
+
+		remove things
+
+		debounce/throttle
+
+		shift things
+			webworker
+
+		are you smarter than chrome's/ff/safari's dev team
+
+		reflow
+		repaint
+
+		vis detach
+
+
+
+	canvas
+		have to keep track of your own objects
+		know what to draw, when to draw it
+
+		render loop
+			input
+			update state
+			render
+
+
+		request animation frame
+
+		input is partiucally hard
+
+
+
+	webGL
+		only get to work with triangles and textures
+
+		GLSL
+
+		pixi three
+
+
+
+
+msr - big data
+	elmqvist hiegharcal arggration 2010
+
+	wickham 
+	bin summerize and smooth
+
+
+
+
+
+predication
+	visualize process of model building and selection
+
+
+
+css
+	transform
+		position
+		scale
+
+	transition
+		property time easie
+
+	animation	
+		keyframes
+
+	good at
+		with predetermined motnion
+		between two states
+
+	bad at
+		dynamic motnion
+		physics
+		multi state animation
+
+
+	purpose and style
+
+	timing
+		mood emotion
+		reaction
+
+	cubic-bezier
+
+	secondary action
+
+	SPEED IT UP
+
+	alltherightmoves vld
+
+	fivesimplesteps
+
+
+
+
+
+earth
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+what do the frameworks add
+	structure to code
+	better templating - constructing trees w/ js is a pain
+	data flow between compenents
+	getting data bound to the parent from a child or a grand child w/ d3 isn't easy
+
+
+
 
 
 calderwood
