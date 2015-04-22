@@ -7,7 +7,7 @@ The acceleration of client side javascript and the development of D3 over the la
 By strategically placing illustrated elements in groups and loading an SVG in a browser, it is possible to add rudimentary animations with d3.timer and d3.transition. Smoothly changing transform translate and/or rotate over time creates the illusion of movement. Toggling the opacity of an arm drawn in two different positions   
 
 ####Adding Interaction
-Beyond creating gif like loops (with vectors and a full color palette), SVG animations can be trigged by user interaction. Changing the stroke-dashoffset while scrolling down the page is one typical use case. Adding flourishes to existing charts 
+Beyond creating gif like loops (with vectors and a full color palette), SVG animations can be trigged by user interaction. Changing the stroke-dashoffset while scrolling down the page can looks quite nice while being simple to implement. Bar charts are also easy to add a flourish to - just save the drawn heights, set the heights 0 on load and use a staggered transition to move them back to their original positions.
 
 
 ####There and back again
