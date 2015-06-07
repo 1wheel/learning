@@ -1,0 +1,52 @@
+---
+   title: "hw1"  
+   author: "Adam Pearce"  
+   output:  
+     html_document:  
+       keep_md: true  
+
+---
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+Load data from file
+```{r}
+dat = read.csv("hw1_data.csv", header = TRUE)
+```
+
+Look at first two and last two rows with `head` and `tail`
+```{r}
+head(dat, 2)
+tail(dat, 2)
+```
+
+Find number of NAs and mean with `summary`
+```{r}
+summary(dat)
+```
+
+Load the dplyr package for easy filtering. Install with `install.packages("dplyr")`. [Cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+```{r}
+library(dplyr)
+```
+
+Filter to find observations where Ozone is greater than 37 and Temp greater than 90
+```{r}
+dat %>% filter(Ozone > 37) %>% filter(Temp > 90)
+```
+
+Find mean with summary
+```{r}
+dat %>% filter(Ozone > 37) %>% filter(Temp > 90) %>% summary
+```
+
+Mean of temp when Month is 6
+```{r}
+dat %>% filter(Month == 6) %>% summary
+```
+
+Max Ozone when Month is 5
+```{r}
+dat %>% filter(Month == 5) %>% summary
+```
