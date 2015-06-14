@@ -5,14 +5,11 @@ complete <- function(directory, id = 1:332) {
   dat <- data.frame()
   
   for (i in id){
-    #dat <- rbind(dat, read.csv(files_list[i]))
-    #dat <- rbind(dat, id)
     nobs <- sum(complete.cases(read.csv(files_list[i]))) 
-    dat <- rbind(dat, c(id, nobs)) 
+    dat <- rbind(dat, c(i, nobs)) 
   }
-  colnames(dat) <- c('id', 'nobs')
   
+  colnames(dat) <- c('id', 'nobs')
   
   dat
 }
-complete("specdata", 1)
