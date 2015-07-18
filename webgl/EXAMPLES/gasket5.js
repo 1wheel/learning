@@ -8,11 +8,13 @@ var points = [];
 
 var gui = new dat.GUI();
 var settings = {
-  numDivisions: 3,
+  numDivisions: 5,
   angle:        1,
+  xOffset: 0,
 }
-gui.add(settings, 'numDivisions', 0, 5).step(1).onChange(render)
-gui.add(settings, 'angle', -Math.PI, Math.PI).onChange(render)
+gui.add(settings, 'numDivisions', 0, 6).step(1)
+gui.add(settings, 'angle', -Math.PI, Math.PI)
+gui.add(settings, 'xOffset', -1, 1)
 
 var numTimesToSubdivide = 3;
 
@@ -47,7 +49,7 @@ function init()
 
   bufferId = gl.createBuffer();
   gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
-  gl.bufferData( gl.ARRAY_BUFFER, 8*Math.pow(3, 6), gl.STATIC_DRAW );
+  gl.bufferData( gl.ARRAY_BUFFER, 8*Math.pow(3, 12), gl.STATIC_DRAW );
 
 
 
@@ -70,6 +72,8 @@ function rotate(p, θ){
     p[0]*Math.sin(θ) + p[1]*Math.cos(θ), 
   ]
 }
+
+function dist(p){ return Math.sqrt(p[0]*p[0] + p[1]*p[1] )}
 
 function divideTriangle( a, b, c, count )
 {
@@ -94,28 +98,30 @@ function divideTriangle( a, b, c, count )
     divideTriangle( a, ab, ac, count );
     divideTriangle( c, ac, bc, count );
     divideTriangle( b, bc, ab, count );
-    // divideTriangle( ab, bc, ac, count );
+    divideTriangle( ab, bc, ac, count );
 
   }
 }
 
 window.onload = init;
 
-function render()
-{
+function render(){
   var vertices = [
-    vec2( -1, -1 ),
-    vec2(  0,  1 ),
-    vec2(  1, -1 )
+    vec2(  settings.xOffset + Math.cos(Math.PI*2/3*0), Math.sin(Math.PI*2/3*0)),
+    vec2(  settings.xOffset + Math.cos(Math.PI*2/3*1), Math.sin(Math.PI*2/3*1)),
+    vec2(  settings.xOffset + Math.cos(Math.PI*2/3*2), Math.sin(Math.PI*2/3*2)),
   ];
+
   points = [];
   divideTriangle( vertices[0], vertices[1], vertices[2], settings.numDivisions);
 
-  points = points.map(function(d){ return rotate(d, settings.angle) })
+  points = points.map(function(d){
+    return rotate(d, settings.angle*dist(d)) 
+  })
 
   gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
   gl.clear( gl.COLOR_BUFFER_BIT );
   gl.drawArrays( gl.TRIANGLES, 0, points.length );
   points = [];
-  //requestAnimFrame(render);
+  requestAnimFrame(render);
 }
