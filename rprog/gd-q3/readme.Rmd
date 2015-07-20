@@ -1,0 +1,37 @@
+---
+title: "readme.md"
+output: html_document
+---
+
+quiz 3
+
+Download files/install libs
+```
+download.file('http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv', destfile='acs.csv')
+download.file('http://d396qusza40orc.cloudfront.net/getdata%2Fjeff.jpg ', destfile='img.jpeg')
+install.packages('jpeg')
+```
+
+```{r}
+acs = read.csv('acs.csv')
+```
+
+Create logical vector
+
+```{r}
+agricultureLogical = acs$ACR == 3 & acs$AGS == 6
+which(agricultureLogical)
+```
+
+load image lib
+```{r, echo=FALSE}
+library(jpeg)
+```
+
+Find percentile values
+```{r}
+hist = readJPEG('img.jpg', native=TRUE)
+quantile(hist, c(.30, .80))
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
