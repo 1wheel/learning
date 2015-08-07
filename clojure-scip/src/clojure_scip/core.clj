@@ -18,4 +18,15 @@
 
 (count (my-fn "hello" 3 4))
 
-234234
+(def a 123123)
+
+(+ a 123)
+
+(defn square [x] (* x x))
+
+(square 10)
+
+(square (square 10))
+
+
+
