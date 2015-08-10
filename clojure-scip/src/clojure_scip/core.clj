@@ -77,3 +77,16 @@
 ;;1.6
 (defn new-if [pre tc ec]
   (cond (pre tc) ))
+
+
+
+
+
+(+ 10 10)
+
+(def x [1 2])
+
+(first x)
+(last x)
+(rest x)
+
