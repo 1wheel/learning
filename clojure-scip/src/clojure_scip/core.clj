@@ -81,7 +81,7 @@
 
 
 
-
+;;2.1
 (+ 10 10)
 
 (def x [1 2])
@@ -90,3 +90,38 @@
 (last x)
 (rest x)
 
+
+(defn gcd [a b]
+  (if (= b 0)
+    a
+    (gcd b (rem a b))))
+(gcd 10 3)
+(gcd 10 4)
+
+(defn make-rat [n d]
+  (let [g (gcd n d)]
+    [(/ n g) (/ d g)]))
+
+(defn make-rat [n d]
+  (let [g (Math/abs (gcd n d))
+        m (if (neg? d) (* -1 g) g)]
+    [(/ n m) (/ d m)]))
+
+(make-rat 1 2)
+
+
+;;2.2
+(defn make-segment [a b]
+  [a b])
+(def start-segment first)
+(def end-segment last)
+(def x-point first)
+(def y-point last)
+(defn make-point [a b] [a b])
+(def seg [[1 2] [10 3]])
+(defn midpoint-segment [s]
+  (let [a (start-segment s)
+        b (end-segment s)]
+    [(average (x-point a) (x-point b))
+     (average (y-point a) (y-point b))]))
+(midpoint-segment seg)
