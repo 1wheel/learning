@@ -125,3 +125,18 @@
     [(average (x-point a) (x-point b))
      (average (y-point a) (y-point b))]))
 (midpoint-segment seg)
+
+
+;;2.3
+(def rect [[15 23] [3 20]])
+(defn rect-hieght [[a b]]
+  (Math/abs (- (first a) (first b))))
+(defn rect-width [[a b]]
+  (Math/abs (- (last a) (last b))))
+
+(defn rect-perm [r]
+  (* 2 (+ (rect-hieght rect) (rect-width rect))))
+(rect-perm rect)
+(defn rect-area [r]
+  (* (rect-hieght rect) (rect-width rect)))
+(rect-area rect)
