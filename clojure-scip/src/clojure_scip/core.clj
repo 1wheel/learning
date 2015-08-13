@@ -96,7 +96,7 @@
     a
     (gcd b (rem a b))))
 (gcd 10 3)
-(gcd 10 4)
+(gcd 960 500)
 
 (defn make-rat [n d]
   (let [g (gcd n d)]
@@ -140,3 +140,18 @@
 (defn rect-area [r]
   (* (rect-hieght rect) (rect-width rect)))
 (rect-area rect)
+
+
+
+;;2.4
+(defn zcons [x y]
+  (fn [m] (m x y)))
+
+(defn zcar [z]
+  (z (fn [p q] p)))
+
+(defn zcdr [z]
+  (z (fn [p q] q)))
+
+(zcons 1 3)
+(zcar (zcons 1 9))
