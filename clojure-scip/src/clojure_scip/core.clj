@@ -155,3 +155,20 @@
 
 (zcons 1 3)
 (zcar (zcons 1 9))
+
+
+
+;;2.5
+;;100
+(Math/pow 10 2)
+
+(defn pcons [x y]
+  (* (Math/pow 2 x) (Math/pow 3 y)))
+
+(defn pcar [z]
+  (/ (Math/log z) (Math/log 2)))
+
+
+(pcons 24 19)
+
+(pcar (pcons 24 19))
