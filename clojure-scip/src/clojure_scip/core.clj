@@ -172,3 +172,121 @@
 (pcons 24 19)
 
 (pcar (pcons 24 19))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;;4clojure
+
+(let [x 5] (+ 2 x))
+
+(let [z 1 y 4 x 6] z)
+
+
+
+
+
+
+
+(defn sumfn
+  ([] 0)
+  ([p] p)
+  ([p v] (+ p v)))
+
+
+(= (sumfn [1 2 3]) 6)
+
+(sumfn [1 2 3])
+
+(= 15 (reduce (fn ([] 0) ([p v] (+ p v))) [1 2 3 4 5]))
+
+
+(fn rsum [seq]
+  (reduce (fn sumfn
+            ([] 0)
+            ([p] p)
+            ([p v] (+ p v)))) seq 0)
+
+
+(apply str (re-seq #"[A-Z]+" "bA1B3Ce "))
+
+
+
+((fn foo [x] (when (> x 0) (conj (foo (dec x)) x))) 5)
+
+
+(((sort (rest (reverse [2 5 4 1 3 6]))))
+  (-> [2 5 4 1 3 6] (reverse) (rest) (sort) (__))
+  5)
+
+
+(fn [x] (= (seq x) (reverse x)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
