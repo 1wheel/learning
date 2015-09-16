@@ -1,0 +1,1 @@
+http://www.stat.cmu.edu/~cshalizi/statcomp/14/
