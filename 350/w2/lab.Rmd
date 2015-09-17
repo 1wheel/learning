@@ -1,0 +1,125 @@
+---
+title: '36-350 Lab 2: September 5, 2014'
+output: 
+  html_document:
+    keep_md: true  
+---
+
+Things That Go Vroom
+===
+
+Today's agenda: Manipulating data frames; practicing iteration; practicing re-writing code; checking
+  how reliable random methods are.
+
+
+Part I -- Data Frames
+======
+
+R includes a number of pre-specified data objects as part of its default installation. We will load and manipulate one of these, a data frame of 93 cars with model year 1993. Begin by ensuring that you can load this data with the commands
+
+```{r}
+library(MASS)
+data(Cars93)
+```
+
+Begin by examining the data frame with the command `View(Cars93)` to understand the underlying object. You will need to use functions and other commands to extract elements for this assignment.
+
+1. Obtain a `summary()` of the full data structure. Can you tell from this how many rows are in the data? If so, say how; if not, use another method to obtain the number of rows.
+
+```{r}
+summary(Cars93)
+nrow(Cars93)
+```
+
+
+```
+
+2. What is the mean price of a car with a rear-wheel drive train?
+```{r}
+mean(Cars93[Cars93$DriveTrain == 'Rear',"Price"])
+
+```
+
+3. What is the minimum horsepower of all cars with capacity for 7 passengers? With a capacity of at least 6 passengers?
+```{r}
+min(Cars93[Cars93$Passengers > 6,"Horsepower"])
+min(Cars93[Cars93$Passengers > 5,"Horsepower"])
+```
+
+
+4. Assuming that these cars are exactly as fuel efficient as this table indicates, find the cars that have the maximum, minimum and median distance travellable for highway driving.  You will need at least two columns to work this out; why those two?
+```{r}
+max(Cars93$MPG.highway*Cars93$Fuel.tank.capacity)
+```
+
+Part II -- Reproducibility and Functions
+==========================================
+
+Some of the lectures have included examples of planning production for a factory that turns steel and labor into cars and trucks.  Below is a piece of code that optimizes the factory's output (roughly) given the available resources, using a `repeat` loop.  It's embedded in a function to make it easier for you to run.
+
+```{r}
+factory.function <- function (cars.output=1, trucks.output=1) {
+  factory <- matrix(c(40,1,60,3),nrow=2,
+    dimnames=list(c("labor","steel"),c("cars","trucks")))
+  available <- c(1600,70); names(available) <- rownames(factory)
+  slack <- c(8,1); names(slack) <- rownames(factory)
+  output <- c(cars.output, trucks.output); names(output) <- colnames(factory)
+
+  passes <- 0 # How many times have we  been around the loop?
+  repeat {
+     passes <- passes + 1
+     needed <- factory %*% output # What do we need for that output level?
+     # If we're not using too much, and are within the slack, we're done
+     if (all(needed <= available) &&
+         all((available - needed) <= slack)) {
+       break()
+     }
+     # If we're using too much of everything, cut back by 10%
+     if (all(needed > available)) {
+       output <- output * 0.9
+       next()
+     }
+     # If we're using too little of everything, increase by 10%
+     if (all(needed < available)) {
+       output <- output * 1.1
+       next()
+     }
+     # If we're using too much of some resources but not others, randomly
+     # tweak the plan by up to 10%
+      # runif == Random number, UNIFormly distributed, not "run if"
+     output <- output * (1+runif(length(output),min=-0.1,max=0.1))
+  }
+  
+  print(needed)
+  output[3] = passes
+  return(output)
+}
+```
+
+5. Run the function above with the command
+
+```{r}
+factory.function()
+```
+
+to obtain a default output value, starting from a very low initial planned output. What is the final output capacity obtained?
+
+6. Repeat this four more times to obtain new output values. Do these answers differ from each other? If so why? If not, why not?
+```{r}
+factory.function()
+factory.function()
+factory.function()
+factory.function()
+```
+# yes - they are determined by a random walk that doesn't converage on a single exact anwser
+
+7. Right now, the number of `passes` is a value held within the function itself and not shared. Change the code so that the number of `passes` will be returned at the end of the function, as well as the final `output`. 
+
+8. Now, set the initial output levels to 30 cars and 20 trucks and run the code.  What is the final output plan (`output`)?  What is the final demand for resources (`needed`)?  Is the plan within budget and within the slack?  How many iterations did it take to converge (`passes`)? For all but `output` you will need to either print this message out deliberately, or return an object that contains all the quantities you want.
+
+```{r}
+factory.function(cars.output=30, trucks.output=20)
+
+```
+
+# 1000+ iterations, seems to be within slack
