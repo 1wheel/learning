@@ -71,32 +71,32 @@
 
 ;;;; MODULE 5
 
-;; (defn take-top-values
-;;   [indicator-values num-values]
-;;   (take num-values
-;;         (sort-by second > indicator-values)))
+ (defn take-top-values
+   [indicator-values num-values]
+   (take num-values
+         (sort-by second > indicator-values)))
 
-;; (defn get-values
-;;   "Returns a relation of two keys from API response."
-;;   [path query-params key1 key2]
-;;   (let [response (get-api path query-params)]
-;;     (for [item (:results response)]
-;;       [(key1 item) (key2 item)])))
+ (defn get-values
+   "Returns a relation of two keys from API response."
+   [path query-params key1 key2]
+   (let [response (get-api path query-params)]
+     (for [item (:results response)]
+       [(key1 item) (key2 item)])))
 
-;; (def indicators
-;;   (delay (get-values "/topics/16/indicators" {} :name :id)))
+ (def indicators
+   (delay (get-values "/topics/16/indicators" {} :name :id)))
 
-;; (defn get-indicators []
-;;   "Gets vector of indicators.
-;;   /topics/16/indicators:   All urban development
-;;   --- Other possibilities ---
-;;   /sources/2/indicators:   All world development indicators (about 1300)
-;;   /indicators:             All Indicators (about 8800)"
-;;   @indicators)
+ (defn get-indicators []
+   "Gets vector of indicators.
+   /topics/16/indicators:   All urban development
+   --- Other possibilities ---
+   /sources/2/indicators:   All world development indicators (about 1300)
+   /indicators:             All Indicators (about 8800)"
+   @indicators)
 
-;; (defn -main
-;;   [& args]
-;;   (let [indicator-values (get-indicator-values "EN.POP.DNST" 2010)
-;;         top-10-values (take-top-values indicator-values 10)]
-;;     (doseq [value top-10-values]
-;;       (println (str (first value) " " (second value))))))
+ (defn -main
+   [& args]
+   (let [indicator-values (get-indicator-values "EN.POP.DNST" 2010)
+         top-10-values (take-top-values indicator-values 10)]
+     (doseq [value top-10-values]
+       (println (str (first value) " " (second value))))))

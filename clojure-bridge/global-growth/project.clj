@@ -10,6 +10,6 @@
                  [compojure "1.1.6"]
                  [hiccup "1.0.4"]]
   :plugins [[lein-ring "0.8.10"]]
-;;   :ring {:handler global-growth.web/handler}
+  :ring {:handler global-growth.web/handler}
   :main ^:skip-aot global-growth.core
   :target-path "target/%s")
