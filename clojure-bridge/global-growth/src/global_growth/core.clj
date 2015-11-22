@@ -2,21 +2,18 @@
   (:require [clj-http.client :as client]
             [cheshire.core :as json]))
 
-(defn -main
-  [& args]
-  (println (client/get "http://api.worldbank.org/countries/all/indicators/EN.POP.DNST?format=json&date=2010")
-)
-  (println "Hello, ClojureBridge!"))
 
 (def apiRES (client/get "http://api.worldbank.org/countries/all/indicators/EN.POP.DNST?format=json&date=2010"))
 
-(:body apiRES)
+;(:body apiRES)
 
 
-(defn getPopulationDensity)
+;(defn getPopulationDensity)
 
 
 ;; MODULE 4
+
+
 
  (defn get-api
    "Returns map representing API response."
@@ -30,34 +27,47 @@
      {:metadata metadata
       :results results}))
 
+(map (fn [x] [(:value (:country x)) (:value x)]) (:results (get-api "/countries/all/indicators/EN.POP.DNST" {:date 2010})))
 
-;; (defn get-country-and-value
-;;   [response]
-;;   (for [item (:results response)]
-;;     (vector (get-in item [:country :value]) (get item :value))))
+ (defn get-country-and-value
+   [response]
+   (for [item (:results response)]
+     (vector (get-in item [:country :value]) (get item :value))))
 
-;; (defn remove-aggregate-countries
-;;   "Remove all countries that aren't actually countries, but are aggregates."
-;;   [countries]
-;;   (remove (fn [country]
-;;             (= (get-in country [:region :value]) "Aggregates")) countries))
+(get-country-and-value
+  (get-api "/countries/all/indicators/EN.POP.DNST" {:date 2010}))
 
-;; ;; Get set of country ids so we can filter out aggregate values.
-;; (def countries
-;;   (delay
-;;     (let [countries (remove-aggregate-countries (:results (get-api "/countries" {})))]
-;;       (set (map :name countries)))))
+ (defn remove-aggregate-countries
+   "Remove all countries that aren't actually countries, but are aggregates."
+   [countries]
+   (remove (fn [country]
+             (= (get-in country [:region :value]) "Aggregates")) countries))
 
-;; (defn get-indicator-values
-;;   "Returns indicator values for a specified year for all countries."
-;;   [indicator-code year]
-;;   (let [response (get-api (str "/countries/all/indicators/" indicator-code)
-;;                           {:date (str year)})
-;;         values (get-country-and-value response)]
-;;     (for [[country value] values
-;;           :when (and (not (nil? value))
-;;                      (contains? @countries country))]
-;;       [country (read-string value)])))
+ ;; Get set of country ids so we can filter out aggregate values.
+ (def countries
+   (delay
+     (let [countries (remove-aggregate-countries (:results (get-api "/countries" {})))]
+       (set (map :name countries)))))
+
+ (defn get-indicator-values
+   "Returns indicator values for a specified year for all countries."
+   [indicator-code year]
+   (let [response (get-api (str "/countries/all/indicators/" indicator-code)
+                           {:date (str year)})
+         values (get-country-and-value response)]
+     (for [[country value] values
+           :when (and (not (nil? value))
+                      (contains? @countries country))]
+       [country (read-string value)])))
+
+
+(defn -main
+  [& args]
+
+  (doseq [val (take-last 10 (sort-by last (get-indicator-values "EN.POP.DNST" 2010)))] (println val))
+
+  (println "Hello, ClojureBridge!"))
+
 
 ;;;; MODULE 5
 
