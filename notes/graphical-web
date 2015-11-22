@@ -1,0 +1,58 @@
+the graphical web
+
+
+web gl
+
+demos
+	red bull montain race
+	marmoset
+	nasa curosity
+
+
+webgl2
+	availble as extensions
+
+	multiple rander targets
+
+	instancing
+
+	uniform buffers
+
+	transform feed back
+	multisample renderbuffers
+
+
+what's in a 3d model
+	node heiarchy and geometry
+
+	materials and textures
+
+	animations and skins
+
+native modeling tool froom
+	.blend
+	maya
+
+	interchange model formats
+
+	.fbx
+	collada
+		xml + image
+
+	obj
+
+3d needs a fransimission format
+
+
+glTF
+	jpeg for 3d
+
+	.json, .bin, .shader, .png/.jpg
+
+
+
+
+
+
+
+instagram data for the web
