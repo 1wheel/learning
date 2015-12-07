@@ -31,3 +31,19 @@
 - http://engineering2success.blogspot.com/
 - https://twitter.com/asmith83/lists/fun-with-fec-filings
 - campfin slack
+
+# night of work
+- https://www.washingtonpost.com/graphics/politics/2016-election/campaign-finance/
+- http://www.nytimes.com/interactive/2016/us/elections/election-2016-campaign-money-race.html?_r=0
+- http://graphics.wsj.com/elections/2016/campaign-finance/
+- 
+# embeds
+- https://www.washingtonpost.com/news/post-politics/wp/2015/10/15/fiorina-campaign-sees-fundraising-boost-in-the-third-quarter/
+- http://blogs.wsj.com/washwire/2015/10/15/jeb-bush-has-10-3-million-on-hand-as-fundraising-slowed/
+
+# other
+- https://www.washingtonpost.com/graphics/politics/2016-election/large-donors/
+- http://www.washingtonpost.com/wp-srv/special/politics/campaign-finance/
+- http://graphics.latimes.com/2016-campaign-finance/
+- http://www.nytimes.com/interactive/2015/10/11/us/politics/2016-presidential-election-super-pac-donors.html
+- http://graphics.wsj.com/elections/2016/fec-donor-data/
