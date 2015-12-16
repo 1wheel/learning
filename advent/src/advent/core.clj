@@ -120,3 +120,92 @@
 (.startsWith (md5 (str "bgvyzdsv" 0)) "0")
 
 
+;;day 5
+(def input5 (slurp "inputs/5"))
+(def strings (clojure.string/split-lines input5))
+
+(defn isVowel [x]
+  (not= nil (re-find #"a|e|i|o|u" x)))
+
+(defn has3Vowels [str]
+  (> (count
+       (filter isVowel (clojure.string/split str #"")))
+  2))
+(has3Vowels "asdfasdfasdf")
+
+(defn hasRepeat [str]
+  (true? (reduce
+    (fn [p v]
+      (cond (= p true) true (= p v) true :else v))
+    (clojure.string/split str #""))))
+(hasRepeat "asdfasdf")
+
+(defn hasNoBadSubstr [str]
+  (= nil (re-find #"ab|cd|pq|xy" str)))
+(hasNoBadSubstr "asdfasdfadab")
+
+;;part 1
+(->>
+  (slurp "inputs/5")
+  (clojure.string/split-lines)
+  (filter hasRepeat)
+  (filter has3Vowels)
+  (filter hasNoBadSubstr)
+  count)
+
+(def testStr "haegwjzuvuyypxyu")
+(hasRepeat testStr)
+(has3Vowels testStr)
+(hasNoBadSubstr testStr)
+
+(defn noOverlap [clist]
+  (cond
+    (< (count clist) 3) true
+    (= (first clist) (first (rest clist)) (first (rest (rest clist)))) false
+    :else (noOverlap (rest clist))))
+
+(defn hasPair [clist]
+  (let [slist (sort clist)]
+    (cond
+      (< (count slist) 2) false
+      (= (first slist) (first (rest slist))) true
+      :else (hasPair (rest slist)))))
+
+(hasPair clist)
+(def slist (sort clist))
+(= (first slist) (first (rest slist)))
+(first slist)
+(first (rest slist))
+(< (count slist) 2)
+
+(defn hasSpacedPair [clist]
+  (let [slist (sort clist)]
+    (cond
+      (< (count slist) 3) false
+      (= (first slist) (first (rest (rest clist)))) true
+      :else (hasSpacedPair (rest slist)))))
+(hasSpacedPair clist)
+
+(defn strToList [str]
+  (clojure.string/split  str #""))
+
+;;part 2
+(->>
+  (slurp "inputs/5")
+  (clojure.string/split-lines)
+  (map strToList)
+  (filter hasPair)
+  (filter hasSpacedPair)
+  (filter noOverlap)
+  count)
+
+
+
+(noOverlap (clojure.string/split  "aaaasdfasd" #""))
+(noOverlap (clojure.string/split  "aasdfasd" #""))
+
+
+(def clist (clojure.string/split  "uurcxstgmygtbstg" #""))
+(hasPair clist)
+(hasSpacedPair clist)
+(noOverlap clist)
