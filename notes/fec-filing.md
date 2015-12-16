@@ -36,7 +36,7 @@
 - https://www.washingtonpost.com/graphics/politics/2016-election/campaign-finance/
 - http://www.nytimes.com/interactive/2016/us/elections/election-2016-campaign-money-race.html?_r=0
 - http://graphics.wsj.com/elections/2016/campaign-finance/
-- 
+
 # embeds
 - https://www.washingtonpost.com/news/post-politics/wp/2015/10/15/fiorina-campaign-sees-fundraising-boost-in-the-third-quarter/
 - http://blogs.wsj.com/washwire/2015/10/15/jeb-bush-has-10-3-million-on-hand-as-fundraising-slowed/
