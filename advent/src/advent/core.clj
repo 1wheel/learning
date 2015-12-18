@@ -209,3 +209,7 @@
 (hasPair clist)
 (hasSpacedPair clist)
 (noOverlap clist)
+
+
+
+;;day 6
