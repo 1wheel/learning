@@ -213,3 +213,60 @@
 
 
 ;;day 6
+
+
+ (count (map (fn [x] 0) (range 1000000)))
+
+
+
+;; day 7
+(bit-xor 10 32)
+(bit-shift-left 8 1)
+(bit-shift-right 8 1)
+
+
+(->>
+  (slurp "inputs/6")
+  (clojure.string/split-lines))
+
+(def wires (clojure.string/split-lines (slurp "inputs/7")))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
