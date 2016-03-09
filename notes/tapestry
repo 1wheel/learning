@@ -1,0 +1,262 @@
+# Who invented data journalism scott klien
+
+- 538
+- detroit free press analysis of riotered
+- keeping tracking of pestlance, before news papers - tracking the rise of the plague
+- stamform mecurcy. oldest news paper - commedies prices on the fron the page, shipping news. lloyds list 
+- penn gazzette, published 'join or die' and shipping news/prices
+- 1788 election results 
+
+wood blocks to set in type
+  - bombay times 1842 - publishes line cahrt
+  - napolian graphic of invansion shaips
+
+Engraving
+  - harpers
+  - cut into wood, made of blocks of wood
+  - sometimes copper
+  - penny press (new york daily trib) giant graphic on front page 1844
+  - 1849 line chart, needed very careful annoation descscinb
+  - civil war boom for battle maps. engraving companies formed to make these
+  - transatalnic cable map
+  - 1890 first weather isoline 
+  - diagram showing the popularity of women's weapons
+
+  lot of copying between papers in different cities
+
+photogravier
+  - take a picture of a drawing and transfer it to copper
+  - 1888
+  - nyt publishes chorlopleth of election results morning after - misses several mckinnley states
+  - early cartogram showing results of vote for irish indepence
+  - 1909 when will the world be full, dot density diagram
+  - wsj late on tables
+  - 1901 trib made a drive chart
+
+news papers provide live election results before radio
+  - lights
+  - spotlights
+
+how did you reserch
+  - search for 'above chart' 'below chart' 'diagram showing'. digital news paper archives
+  - no standard names - 'statical curves' or 'statical course'
+
+AP election results
+  - since 1850s
+  - pay people to call up local results and report
+  - got it wrong in 1910
+
+Really hard to find who 
+
+Did papers draw from playfair
+  - probably not independent discovery
+  - lots of stats societies 
+  - much more arthimatic then regressions
+  - spent decades thinking about the rules around graphics, huge beurcay about what is a good chart
+  - french started doing it really well in 1860s outside of that frame work
+
+did people learn to read more charts?
+  - professor galbskey's help mentioned
+  - annontations start to disappear
+  - civil war maps were ubiboues
+
+what is technology enabling that wasn't possible in the past
+  - interactivity
+  - programmers that are interested in journalism
+  - line charts were new at one points; suggests we can create new forms that will be intutive
+
+we've become more 'objective'
+  - rise of objectivy in news
+  - commuters? 
+  - TKTK book about this? divcovery of the news
+
+majority of our datasets our from the gov
+  - not public
+  - website scraping
+  - FOIA
+
+
+
+# Power of drawing in visual storytelling
+
+  dear data, data chain
+
+
+drawing the verb, not the noun
+
+people are uncomfortable drawing their ideas
+
+
+power of drawing (verg)
+  clarity
+    elinates distractions
+
+    map your mind
+      grow it from there
+      don't go to google! stop when the page is full
+
+    chart your ideas
+      produce more and more ideas
+      most are bad
+
+    add depth
+
+
+  collaboration
+    if you present something polished, people see flaws not potiential
+
+  creativity
+
+
+
+
+
+
+
+
+# Compenent Crictic - Alan Smith
+
+Before and after dressing show
+
+exhibt A
+show the process of transformation
+
+Thinking text plus
+  what why
+
+exhibit B
+  don't just fill space
+
+exhibit C
+  same data new light
+
+
+
+
+
+# pulling the curtain back on data viz
+
+
+
+
+# selfie data
+
+other people's data is like vaction phots
+
+
+
+
+# plural of annodate
+
+proxy data
+
+  party affilation -> vote choice
+  whole food or cracker barrel -> demographics, call
+
+corroboration
+  overlaying small datasets can show better info
+
+Creation  
+
+  pulling data out of thin air
+
+  sentimentn analysis on nyt headlines
+
+Supplementation
+
+  
+
+story could be lack of data
+
+
+
+
+
+
+
+
+# start with a congnitive challege about data
+
+how to understand scales of measurement or jargon
+  look at cognitive phys
+  look at storytellers, data journalists, designers, science journalists
+
+
+unfamilar measures
+  concreate scales
+    takes a lot of work to create a measurement anlogy
+    have to know what our audince things is familar
+
+  can we automatallicy generate these?
+    what makes a good analogy
+
+    good objects
+      familyar
+      concrete
+      countable
+      low variance
+
+    how do we represent these objects in a database
+      wordnet, a semantic network
+      focus on afticaf - man made object taken as a whole
+      quearied for pyshical properties
+        amazon, DBpedia
+      mturk to find if it familar
+
+    keeping number sense below 10 is important
+
+    spatial and areas work better with located landmarks
+      scrape yelp
+      figure out how known they are based on flikr tags
+
+
+
+make sense of many visualizations at once
+  what makes a good sequence for a set of visualzations
+  are some sequences better than others?
+  sequences control the stories we construct in our heads
+
+  most of infoviz research is about sequence of research NOT presention
+
+  examained 400+ transitions in order viz
+
+  temmpol sequence
+  dimension walks
+  measure walks
+  hieracry based
+
+  are these 'fundmental'
+
+  minimze cognitive cost
+
+  don't do lots
+
+  pref order temporal > (dim|measure) > hieracrhcy
+
+  writing and using parrell struture 
+
+  semantic groupings
+
+  low level model doesn't work for repeated transitions
+
+
+
+use narritive tools for analysis
+  recommend views to analysist
+
+
+
+
+
+unflattening - nick sousanis
+a book!
+
+
+
+
+
+
+
+
+
+
